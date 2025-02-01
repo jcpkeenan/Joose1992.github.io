@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Senergy AI</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" style="color:white; font-size: 30px;" href="#">Senergy AI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Our Mission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="aboutus.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="index.html">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="mainbody">
+        <div class="left-panel">
+            <!-- Customer Name -->
+            <div class="customer-name">The Briarwood Organization</div>
+    
+            <!-- Property List -->
+            <div class="property" onclick="updateMetrics('123 Main St', 75, 120, 10, '$5,000', '200 kWh')">
+                <h3>123 Main St</h3>
+                <p class="alerts">Alert: High energy usage!</p>
+                <a class="btn btn-primary" href="dashboarddetails1.html" >Go to Dashboard</a>
+            </div>
+            <div class="property" onclick="updateMetrics('456 Elm St', 85, 110, 8, '$6,500', '250 kWh')">
+                <h3>456 Elm St</h3>
+                <a class="btn btn-primary" href="dashboarddetails2.html">Go to Dashboard</a>
+            </div>
+            <div class="property" onclick="updateMetrics('789 Oak St', 65, 130, 12, '$4,000', '300 kWh')">
+                <h3>789 Oak St</h3>
+                <p class="alerts">Alert: Pending updates</p>
+                <a class="btn btn-primary" href="dashbarddetails3.html">Go to Dashboard</a>
+            </div>
+        </div>
+        <div class="right-panel">
+            <h2>Key Metrics</h2>
+            <div class="metric">
+                <div class="property">
+                    <h5 style="color: #1f77b4;">Overall EnergyStar Score:</h5>
+                    <img height="25px" src="images/check.png"/>
+                </div>
+                <p class="value" id="energy-star">-</p>
+            </div>
+            <div class="metric">
+                <div class="property">
+                    <h5 style="color: #1f77b4;">Energy Use Intensity (EUI):</h5>
+                    <img height="25px" src="images/x.png"/>
+                </div>
+                <p class="value" id="eui">-</p>
+            </div>
+            <div class="metric">
+                <div class="property">
+                    <h5 style="color: #1f77b4;">Greenhouse Gas Emissions (tons):</h5>
+                    <img height="25px" src="images/check.png"/>
+                </div>
+                <p class="value" id="ghg">-</p>
+            </div>
+            <div class="metric">
+                <h5 style="color: #1f77b4;">Total Energy Cost Savings vs. Benchmark:</h5>
+                <button class="toggle-button" onclick="toggleValue('energy-savings', '$5,000', '200 kWh')">Units/$</button>
+                <p class="value" id="energy-savings">$5,000</p>
+            </div>
+            <div class="metric">
+                <h5 style="color: #1f77b4;">Total Water Cost Savings vs. Benchmark:</h5>
+                <button class="toggle-button" onclick="toggleValue('water-savings', '$1,200', '100 gallons')">Units/$</button>
+                <p class="value" id="water-savings">$1,200</p>
+            </div>
+    
+            <!-- Pie Chart for Energy Sources -->
+            <div class="chart-container">
+                <h4>Energy Source Breakdown</h4>
+                <canvas id="energyPieChart" width="300" height="300" style="display: block; box-sizing: border-box; height: 300px; width: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    function updateMetrics(address, energyStar, eui, ghg, energySavings, waterSavings) {
+    document.getElementById('energy-star').innerText = energyStar;
+    document.getElementById('eui').innerText = eui + ' kBTU/sqft';
+    document.getElementById('ghg').innerText = ghg + ' tons';
+    document.getElementById('energy-savings').innerText = energySavings;
+    document.getElementById('water-savings').innerText = waterSavings;
+}
+
+function goToDashboard(number) {
+    if (number === 1) {
+        window.location.href = '/Dashboard/DashboardDetails1';
+    }
+    if (number === 2) {
+        window.location.href = '/Dashboard/DashboardDetails2';
+    }
+    if (number === 3) {
+        window.location.href = '/Dashboard/DashboardDetails3';
+    }
+}
+
+function toggleValue(elementId, value1, value2) {
+    const element = document.getElementById(elementId);
+    element.innerText = element.innerText === value1 ? value2 : value1;
+}
+
+// Pie Chart for Energy Sources
+const ctx = document.getElementById('energyPieChart').getContext('2d');
+const energyChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Natural Gas', 'Oil', 'Electric'],
+        datasets: [{
+            data: [40, 30, 30], // Mock data for energy sources
+            backgroundColor: ['#ff9999', '#66b3ff', '#99ff99'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Senergy AI</title>
+
+<style>
+    .dashboardDetailsBody{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+    canvas {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #1f77b4;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056a3;
+    }
+
+    #barSubtitle, #lineSubtitle, #rollingSubtitle {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #555;
+    }
+
+    .dashboard-button {
+        margin: 20px auto;
+        width: 80%;
+        max-width: 300px;
+        padding: 15px;
+        font-size: 18px;
+        background-color: #1f77b4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .dropdown-content {
+        display: none;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 300px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .dropdown-content button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        border: none;
+        font-size: 14px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .dropdown-content button:hover {
+        background-color: #ddd;
+    }
+
+    .chart{
+        display:none;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" style="color:white; font-size: 30px;" href="#">Senergy AI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Our Mission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="aboutus.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="index.html">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="dashboardDetailsBody">
+        <h1>Interactive Dashboard</h1>
+        <h4>Building Address: 789 Oak St, Sustainability City, SC 98765</h4>
+    
+        <!-- Energy Dashboard Button -->
+        <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')">Energy Dashboard</button>
+        <div id="energy-dropdown" class="dropdown-content">
+            <button onclick="displayChart('energy-month-end')">Month End</button>
+            <button onclick="displayChart('energy-year-to-date')">Year-to-Date</button>
+            <button onclick="displayChart('energy-rolling-twelve-months')">Rolling Twelve Months</button>
+        </div>
+    
+        <!-- Water Dashboard Button -->
+        <button class="dashboard-button" onclick="toggleDropdown('water-dropdown')">Water Dashboard</button>
+        <div id="water-dropdown" class="dropdown-content">
+            <button onclick="displayChart('water-month-end')">Month End</button>
+            <button onclick="displayChart('water-year-to-date')">Year-to-Date</button>
+            <button onclick="displayChart('water-rolling-twelve-months')">Rolling Twelve Months</button>
+        </div>
+    
+        <!-- Waste Dashboard Button -->
+        <button class="dashboard-button" onclick="toggleDropdown('waste-dropdown')">Waste Dashboard</button>
+        <div id="waste-dropdown" class="dropdown-content">
+            <button onclick="displayChart('waste-month-end')">Month End</button>
+            <button onclick="displayChart('waste-year-to-date')">Year-to-Date</button>
+            <button onclick="displayChart('waste-rolling-twelve-months')">Rolling Twelve Months</button>
+        </div>
+    
+        <!-- Energy Charts Section -->
+        <div id="energy-month-end" class="chart">
+            <h2>Energy Usage - Month End</h2>
+            <canvas id="energyBarChart1"></canvas>
+        </div>
+        <div id="energy-year-to-date" class="chart">
+            <h2>Energy Usage - Year-to-Date</h2>
+            <canvas id="EnergylineChart1"></canvas>
+        </div> 
+        <div id="energy-rolling-twelve-months" class="chart">
+            <h2>Energy Usage - Rolling Twelve Months</h2>
+            <canvas id="rollingChart"></canvas>
+        </div>
+    
+        <!-- Water Charts Section -->
+        <div id="water-month-end" class="chart">
+            <h2>Water Usage - Month End</h2>
+            <canvas id="waterChart"></canvas>
+        </div>
+        <div id="water-year-to-date" class="chart">
+            <h2>Water Usage - Year-to-Date</h2>
+            <canvas id="waterLineChart"></canvas>
+        </div>
+        <div id="water-rolling-twelve-months" class="chart">
+            <h2>Water Usage - Rolling Twelve Months</h2>
+            <canvas id="waterRollingChart"></canvas>
+        </div>
+    
+        <!-- Waste Charts Section -->
+        <div id="waste-month-end" class="chart">
+            <h2>Waste Output - Month End</h2>
+            <canvas id="wasteChart"></canvas>
+        </div>
+        <div id="waste-year-to-date" class="chart">
+            <h2>Waste Output - Year-to-Date</h2>
+            <canvas id="wasteLineChart"></canvas>
+        </div>
+        <div id="waste-rolling-twelve-months" class="chart">
+            <h2>Waste Output - Rolling Twelve Months</h2>
+            <canvas id="wasteRollingChart"></canvas>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        function toggleDropdown(dropdownId) {
+                const dropdown = document.getElementById(dropdownId);
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+    
+        // Display the selected chart
+        function displayChart(chartId) {
+            const charts = document.querySelectorAll('.chart');
+            charts.forEach(chart => {
+                chart.style.display = 'none';
+            });
+            document.getElementById(chartId).style.display = 'block';
+            //energy
+            if (chartId === 'energy-month-end'){
+                loadEnergyBarChart1(chartId);
+            }
+            if (chartId === 'energy-year-to-date'){
+                loadEnergyLineChart1(chartId);
+            }
+            if (chartId === 'energy-rolling-twelve-months'){
+                loadRollingChart1(chartId);
+            }
+            //water
+            if (chartId === 'water-month-end'){
+                loadEnergyBarChart1(chartId);
+            }
+            if (chartId === 'water-year-to-date'){
+                loadEnergyLineChart1(chartId);
+            }
+            if (chartId === 'water-rolling-twelve-months'){
+                loadRollingChart1(chartId);
+            }
+            //waste
+            if (chartId === 'waste-month-end'){
+                loadEnergyBarChart1(chartId);
+            }
+            if (chartId === 'waste-year-to-date'){
+                loadEnergyLineChart1(chartId);
+            }
+            if (chartId === 'waste-rolling-twelve-months'){
+                loadRollingChart1(chartId);
+            }
+        }
+    
+        function loadRollingChart1(chartID){
+    if(chartID === 'energy-rolling-twelve-months'){
+         // Rolling Twelve Months Chart (mock data with fluctuations)
+        const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+        const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
+        const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        const ctxRolling = document.getElementById('rollingChart').getContext('2d');
+        const rollingChart = new Chart(ctxRolling, {
+            type: 'line',
+            data: {
+                labels: rollingMonths,
+                datasets: [
+                    { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
+                    { label: 'Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                    x: { title: { display: true, text: 'Months' } }
+                }
+            }
+        });
+    }
+    if(chartID === 'water-rolling-twelve-months'){
+         // Rolling Twelve Months Chart (mock data with fluctuations)
+        const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+        const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
+        const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        const ctxRolling = document.getElementById('waterRollingChart').getContext('2d');
+        const rollingChart = new Chart(ctxRolling, {
+            type: 'line',
+            data: {
+                labels: rollingMonths,
+                datasets: [
+                    { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
+                    { label: 'Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                    x: { title: { display: true, text: 'Months' } }
+                }
+            }
+        });
+    }
+    if(chartID === 'waste-rolling-twelve-months'){
+         // Rolling Twelve Months Chart (mock data with fluctuations)
+        const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+        const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
+        const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        const ctxRolling = document.getElementById('wasteRollingChart').getContext('2d');
+        const rollingChart = new Chart(ctxRolling, {
+            type: 'line',
+            data: {
+                labels: rollingMonths,
+                datasets: [
+                    { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
+                    { label: 'Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                    x: { title: { display: true, text: 'Months' } }
+                }
+            }
+        });
+    }
+}
+
+function loadEnergyLineChart1(chartID){
+    if(chartID === 'energy-year-to-date'){
+        // Energy Line Chart
+    const ctxLine = document.getElementById('EnergylineChart1').getContext('2d');
+    const lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [
+                { label: 'Gas Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                { label: 'Electric Usage (Units)', data: [500, 520, 480, 510, 530, 500], borderColor: 'skyblue', fill: true }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                x: { title: { display: true, text: 'Months' } }
+            }
+        }
+    });
+    }
+    if(chartID === 'water-year-to-date'){
+        // Energy Line Chart
+    const ctxLine = document.getElementById('waterLineChart').getContext('2d');
+    const lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [
+                { label: 'Gas Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                { label: 'Electric Usage (Units)', data: [500, 520, 480, 510, 530, 500], borderColor: 'skyblue', fill: true }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                x: { title: { display: true, text: 'Months' } }
+            }
+        }
+    });
+    }
+    if(chartID === 'waste-year-to-date'){
+        // Energy Line Chart
+    const ctxLine = document.getElementById('wasteLineChart').getContext('2d');
+    const lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [
+                { label: 'Gas Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                { label: 'Electric Usage (Units)', data: [500, 520, 480, 510, 530, 500], borderColor: 'skyblue', fill: true }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                x: { title: { display: true, text: 'Months' } }
+            }
+        }
+    });
+    }
+}
+
+function loadEnergyBarChart1(chartID) {
+    if (chartID === 'energy-month-end'){
+        const unitData = [3200, 4500, 7700]; // Gas, Electricity, Cumulative Total (in units)
+        const dollarData = [320, 675, 995];  // Gas, Electricity, Cumulative Total (in dollars)
+        const labels = ['Gas', 'Electricity', 'Cumulative Total'];
+        const colors = ['orange', 'skyblue', 'green'];
+
+        // Energy Bar Chart
+        const ctxBar = document.getElementById('energyBarChart1').getContext('2d');
+        const energyChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '', // No legend label
+                    data: unitData,
+                    backgroundColor: colors
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Energy Usage' } }
+                }
+            }
+        });
+    }
+
+    if (chartID === 'water-month-end'){
+        const unitData = [3200, 4500, 7700]; // Gas, Electricity, Cumulative Total (in units)
+        const dollarData = [320, 675, 995];  // Gas, Electricity, Cumulative Total (in dollars)
+        const labels = ['Gas', 'Electricity', 'Cumulative Total'];
+        const colors = ['orange', 'skyblue', 'green'];
+
+        // Energy Bar Chart
+        const ctxBar = document.getElementById('waterChart').getContext('2d');
+        const energyChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '', // No legend label
+                    data: unitData,
+                    backgroundColor: colors
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Energy Usage' } }
+                }
+            }
+        });
+    }
+    if (chartID === 'waste-month-end'){
+        const unitData = [3200, 4500, 7700]; // Gas, Electricity, Cumulative Total (in units)
+        const dollarData = [320, 675, 995];  // Gas, Electricity, Cumulative Total (in dollars)
+        const labels = ['Gas', 'Electricity', 'Cumulative Total'];
+        const colors = ['orange', 'skyblue', 'green'];
+
+        // Energy Bar Chart
+        const ctxBar = document.getElementById('wasteChart').getContext('2d');
+        const energyChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '', // No legend label
+                    data: unitData,
+                    backgroundColor: colors
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Energy Usage' } }
+                }
+            }
+        });
+    }
+}
+    
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
