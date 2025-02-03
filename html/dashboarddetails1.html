@@ -31,9 +31,6 @@
         cursor: pointer;
     }
 
-    button:hover {
-        background-color: #0056a3;
-    }
 
     #barSubtitle, #lineSubtitle, #rollingSubtitle {
         font-size: 18px;
@@ -42,10 +39,10 @@
     }
 
     .dashboard-button {
-        margin: 20px auto;
         width: 80%;
         max-width: 300px;
-        padding: 15px;
+        padding: 5px;
+        margin-bottom: -15px;
         font-size: 18px;
         background-color: #1f77b4;
         color: white;
@@ -59,7 +56,7 @@
         margin: 0 auto;
         width: 100%;
         max-width: 300px;
-        background-color: #f9f9f9;
+        background-color: #2078b3;
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         padding: 10px;
         border-radius: 5px;
@@ -69,25 +66,52 @@
         display: block;
         width: 100%;
         padding: 10px;
-        background-color: white;
+        background-color: 2078b3;
+        color: white;
         border: none;
         font-size: 14px;
         text-align: left;
         cursor: pointer;
     }
 
-    .dropdown-content button:hover {
-        background-color: #ddd;
-    }
-
     .chart{
         display:none;
     }
+    .page-container {
+    display: flex;
+    min-height: 100vh;
+    }
+
+    .sidebar-container {
+        background-color: #2078b3;
+        width: 17%; /* Adjust as needed */
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .main-sidebar {
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .sidebar {
+        padding-bottom: 60px; /* Gives some space at the bottom */
+    }
+
+    /* Adjust the main content area */
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+
+   
+
 </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" style="color:white; font-size: 30px;" href="maindashboard.html">Senergy AI</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -110,79 +134,96 @@
             </div>
         </nav>
     </header>
-    
-    <div class="dashboardDetailsBody">
-        <h1>Interactive Dashboard</h1>
-        <h4>Building Address: 123 Main St, Sustainability City, SC 98765</h4>
-    
-        <!-- Energy Dashboard Button -->
-        <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')">Energy Dashboard</button>
-        <div id="energy-dropdown" class="dropdown-content">
-            <button onclick="displayChart('energy-month-end')">Month End</button>
-            <button onclick="displayChart('energy-year-to-date')">Year-to-Date</button>
-            <button onclick="displayChart('energy-rolling-twelve-months')">Rolling Twelve Months</button>
+    <div class="page-container">
+        <div class="sidebar-container">
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                  <!-- Sidebar Menu -->
+                  <nav class="mt-2 total-menu">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')"><span> <img height="35px" src="images/energy.png" alt="">  Energy Dashboard</span></button>
+                            <div id="energy-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('energy-month-end')">Month End</button>
+                                <button onclick="displayChart('energy-year-to-date')">Year-to-Date</button>
+                                <button onclick="displayChart('energy-rolling-twelve-months')">Rolling Twelve Months</button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('water-dropdown')"><span> <img height="35px" src="images/water.png" alt="">  Water Dashboard</span></button>
+                            <div id="water-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('water-month-end')">Month End</button>
+                                <button onclick="displayChart('water-year-to-date')">Year-to-Date</button>
+                                <button onclick="displayChart('water-rolling-twelve-months')">Rolling Twelve Months</button>
+                            </div>
+                        </li>
+                    </ul>
+                  </nav>
+                
+                  <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+              </aside>
         </div>
-    
-        <!-- Water Dashboard Button -->
-        <button class="dashboard-button" onclick="toggleDropdown('water-dropdown')">Water Dashboard</button>
-        <div id="water-dropdown" class="dropdown-content">
-            <button onclick="displayChart('water-month-end')">Month End</button>
-            <button onclick="displayChart('water-year-to-date')">Year-to-Date</button>
-            <button onclick="displayChart('water-rolling-twelve-months')">Rolling Twelve Months</button>
-        </div>
-    
-        <!-- Waste Dashboard Button -->
-        <button class="dashboard-button" onclick="toggleDropdown('waste-dropdown')">Waste Dashboard</button>
-        <div id="waste-dropdown" class="dropdown-content">
-            <button onclick="displayChart('waste-month-end')">Month End</button>
-            <button onclick="displayChart('waste-year-to-date')">Year-to-Date</button>
-            <button onclick="displayChart('waste-rolling-twelve-months')">Rolling Twelve Months</button>
-        </div>
-    
-        <!-- Energy Charts Section -->
-        <div id="energy-month-end" class="chart">
-            <h2>Energy Usage - Month End</h2>
-            <canvas id="energyBarChart1"></canvas>
-        </div>
-        <div id="energy-year-to-date" class="chart">
-            <h2>Energy Usage - Year-to-Date</h2>
-            <canvas id="EnergylineChart1"></canvas>
-        </div> 
-        <div id="energy-rolling-twelve-months" class="chart">
-            <h2>Energy Usage - Rolling Twelve Months</h2>
-            <canvas id="rollingChart"></canvas>
-        </div>
-    
-        <!-- Water Charts Section -->
-        <div id="water-month-end" class="chart">
-            <h2>Water Usage - Month End</h2>
-            <canvas id="waterChart"></canvas>
-        </div>
-        <div id="water-year-to-date" class="chart">
-            <h2>Water Usage - Year-to-Date</h2>
-            <canvas id="waterLineChart"></canvas>
-        </div>
-        <div id="water-rolling-twelve-months" class="chart">
-            <h2>Water Usage - Rolling Twelve Months</h2>
-            <canvas id="waterRollingChart"></canvas>
-        </div>
-    
-        <!-- Waste Charts Section -->
-        <div id="waste-month-end" class="chart">
-            <h2>Waste Output - Month End</h2>
-            <canvas id="wasteChart"></canvas>
-        </div>
-        <div id="waste-year-to-date" class="chart">
-            <h2>Waste Output - Year-to-Date</h2>
-            <canvas id="wasteLineChart"></canvas>
-        </div>
-        <div id="waste-rolling-twelve-months" class="chart">
-            <h2>Waste Output - Rolling Twelve Months</h2>
-            <canvas id="wasteRollingChart"></canvas>
+        <div class="main-content">
+            <div class="dashboardDetailsBody">
+                <h1>Interactive Dashboard</h1>
+                <div class="mb-4">
+                    <h4>Building Address: 123 Main St, Sustainability City, SC 98765</h4>
+                </div>
+            
+                <div id="energy-month-end" class="chart">
+                    <h2 style="margin-bottom: 5%;">Energy Usage - Month End</h2>
+                    <canvas id="energyBarChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="energy-year-to-date" class="chart">
+                    <h2 style="margin-bottom: 5%;">Energy Usage - Year-to-Date</h2>
+                    <canvas id="EnergylineChart1" width="500" height="400"></canvas>
+                </div> 
+                <div id="energy-rolling-twelve-months" class="chart">
+                    <h2 style="margin-bottom: 5%;">Energy Usage - Rolling Twelve Months</h2>
+                    <canvas id="rollingChart" width="500" height="400"></canvas>
+                </div>
+            
+                <!-- Water Charts Section -->
+                <div id="water-month-end" class="chart">
+                    <h2 style="margin-bottom: 5%;">Water Usage - Month End</h2>
+                    <canvas id="waterChart" width="500" height="400"></canvas>
+                </div>
+                <div id="water-year-to-date" class="chart">
+                    <h2 style="margin-bottom: 5%;">Water Usage - Year-to-Date</h2>
+                    <canvas id="waterLineChart" width="500" height="400"></canvas>
+                </div>
+                <div id="water-rolling-twelve-months" class="chart">
+                    <h2 style="margin-bottom: 5%;">Water Usage - Rolling Twelve Months</h2>
+                    <canvas id="waterRollingChart" width="500" height="400"></canvas>
+                </div>
+            
+                <!-- Waste Charts Section -->
+                <div id="waste-month-end" class="chart">
+                    <h2 style="margin-bottom: 5%;">Waste Output - Month End</h2>
+                    <canvas id="wasteChart" width="500" height="400"></canvas>
+                </div>
+                <div id="waste-year-to-date" class="chart">
+                    <h2 style="margin-bottom: 5%;">Waste Output - Year-to-Date</h2>
+                    <canvas id="wasteLineChart" width="500" height="400"></canvas>
+                </div>
+                <div id="waste-rolling-twelve-months" class="chart">
+                    <h2 style="margin-bottom: 5%;">Waste Output - Rolling Twelve Months</h2>
+                    <canvas id="wasteRollingChart" width="500" height="400"></canvas>
+                </div>
+            </div>
         </div>
     </div>
     
+    
     <script type="text/javascript">
+
+
+
+
         function toggleDropdown(dropdownId) {
                 const dropdown = document.getElementById(dropdownId);
                 dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
