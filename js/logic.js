@@ -1,6 +1,7 @@
-function updateMetrics(address, energyStar, eui, ghg, energySavings, waterSavings) {
+function updateMetrics(address, energyStar, eui, wui, ghg, energySavings, waterSavings) {
     document.getElementById('energy-star').innerText = energyStar;
     document.getElementById('eui').innerText = eui + ' kBTU/sqft';
+    document.getElementById('wui').innerText = wui + ' gal/sqft';
     document.getElementById('ghg').innerText = ghg + ' tons';
     document.getElementById('energy-savings').innerText = energySavings;
     document.getElementById('water-savings').innerText = waterSavings;
