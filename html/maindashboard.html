@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<title>Senergy AI</title>
+<title>Senergy</title>
 <link rel="icon" href="images/logo.png">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" style="color:white; font-size: 30px;" href="maindashboard.html"><span> <img height="45px" width="45px" src="images/logo.png"> Senergy AI</span></a>
+                <a class="navbar-brand" style="color:white; font-size: 30px;" href="maindashboard.html"><span> <img height="45px" width="45px" src="images/logo.png"> Senergy</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,9 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="ourmission.html">Our Mission</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link text-white" href="aboutus.html">Our Team</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link text-white" href="index.html">Log Out</a>
                         </li>
@@ -82,7 +82,7 @@
             visibility: visible;
             }
 
-            .chekcbox-alert{
+            .checkbox-alert{
                 display: flex;         
                 align-items: center;   
                 gap: 65px;  
@@ -117,46 +117,48 @@
     <div class="mainbody">
         <div class="left-panel">
             <!-- Customer Name -->
-             <div class="property-title">
-                 <div class="customer-name">The Briarwood Organization</div>
-                 <a class="btn btn-primary title-button" href="dashboarddetails2.html">Go to Dashboard</a>
-                 <div class="alert-message title-checkbox">
-                    <label>select all properties</label>
-                     <input type="checkbox"/>
-                 </div>
-             </div>
+            <div class="property-title">
+                <div class="customer-name">The Briarwood Organization</div>
+                <a class="btn btn-primary title-button" href="dashboarddetails1.html" id="goToDashboardButton">Go to Dashboard</a>
+                <div class="alert-message title-checkbox">
+                    <label for="selectAllCheckbox">Select all properties</label>
+                    <input type="checkbox" id="selectAllCheckbox"/>
+                </div>
+            </div>
     
+            <!-- Property 1 -->
             <div id="property1" class="property selected" onclick="selectProperty('property1', '123 Main St', 75, 120, 150, 10, '$5,000', '200 kWh')">
                 <h3>123 Main St</h3>
-                <div class="chekcbox-alert">
+                <div class="checkbox-alert">
                     <div class="alert-message">
                         <img src="images/danger.png" height="35px"/>
                         <p class="alerts">Alert: High Energy usage!</p>
                     </div>
-                    <input type="checkbox"/>
+                    <input type="checkbox" class="property-checkbox" data-property="property1"/>
                 </div>
             </div>
+            <!-- Property 2 -->
             <div id="property2" class="property" onclick="selectProperty('property2', '456 Elm St', 85, 110, 135, 8, '$6,500', '250 kWh')">
                 <h3>456 Elm St</h3>
-                <div class="chekcbox-alert">
+                <div class="checkbox-alert">
                     <div class="alert-message">
                         <img src="images/danger.png" height="0px"/>
                         <p class="alerts"></p>
                     </div>
                 </div>
-                <input type="checkbox"/>
+                <input type="checkbox" class="property-checkbox" data-property="property2"/>
             </div>
+            <!-- Property 3 -->
             <div id="property3" class="property" onclick="selectProperty('property3', '789 Oak St', 65, 130, 115, 12, '$4,000', '300 kWh')">
                 <h3>789 Oak St</h3>
-                <div class="chekcbox-alert">
+                <div class="checkbox-alert">
                     <div class="alert-message">
                         <img src="images/danger.png" height="35px"/>
                         <p class="alerts">Alert: Pending updates</p>
                     </div>
-                    <input type="checkbox"/>
+                    <input type="checkbox" class="property-checkbox" data-property="property3"/>
                 </div>
             </div>
-            
         </div>
         <div class="right-panel">
             <h2>Key Metrics</h2>
@@ -262,6 +264,53 @@
     function closewatersavingmodal() {
         $("#watersavingmodal").modal('hide');        
     }
+
+    // Get the "Go to Dashboard" button
+    const goToDashboardButton = document.getElementById('goToDashboardButton');
+
+    // Add event listener to the "Go to Dashboard" button
+    goToDashboardButton.addEventListener('click', function(event) {
+        // Prevent the default action of the link
+        event.preventDefault();
+        
+        // Get all checkboxes with the class "property-checkbox"
+        const checkboxes = document.querySelectorAll('.property-checkbox');
+        
+        // Array to store the selected properties' data
+        let selectedProperties = [];
+
+        // Loop through each checkbox and check if it is checked
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                // Get the property info from the data-attribute and add to the array
+                selectedProperties.push(checkbox.getAttribute('data-property'));
+            }
+        });
+
+        // If selected properties exist, store the data in localStorage
+        if (selectedProperties.length > 0) {
+            localStorage.setItem('selectedProperties', JSON.stringify(selectedProperties));
+            // Redirect to the dashboard details page
+            window.location.href = 'dashboarddetails1.html';
+        } else {
+            // Optionally show an alert if no properties are selected
+            alert('Please select at least one property.');
+        }
+    });
+
+
+    const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+
+        selectAllCheckbox.addEventListener('change', function() {
+
+
+        const propertyCheckboxes = document.querySelectorAll('.property-checkbox');
+        
+        propertyCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    });
+
 
 
     function updateMetrics(address, energyStar, eui, wui, ghg, energySavings, waterSavings) {
