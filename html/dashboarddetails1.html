@@ -40,11 +40,11 @@
     }
 
     .dashboard-button {
-        width: 80%;
+        width: 95%;
         max-width: 300px;
-        padding: 5px;
         margin-bottom: -15px;
         font-size: 18px;
+        text-align: start;
         background-color: #1f77b4;
         color: white;
         border: none;
@@ -85,7 +85,7 @@
 
     .sidebar-container {
         background-color: #2078b3;
-        width: 17%; /* Adjust as needed */
+        width: 20%; /* Adjust as needed */
         min-height: 100vh;
         position: sticky;
         top: 0;
@@ -187,6 +187,22 @@
                             </div>
                         </li>
                         <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('natural-gas-dropdown')"><span> <img height="35px" src="images/energy.png" alt="">  Natural Gas Dashboard</span></button>
+                            <div id="natural-gas-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('natural-gas-month-end')">Month End</button>
+                                <button onclick="displayChart('natural-gas-year-to-date')">Year-to-Date</button>
+                                <button onclick="displayChart('natural-gas-rolling-twelve-months')">Rolling Twelve Months</button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('electricity-dropdown')"><span> <img height="35px" src="images/energy.png" alt="">  Electricity Dashboard</span></button>
+                            <div id="electricity-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('electricity-month-end')">Month End</button>
+                                <button onclick="displayChart('electricity-year-to-date')">Year-to-Date</button>
+                                <button onclick="displayChart('electricity-rolling-twelve-months')">Rolling Twelve Months</button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
                             <button class="dashboard-button" onclick="toggleDropdown('water-dropdown')"><span> <img height="35px" src="images/water.png" alt="">  Water Dashboard</span></button>
                             <div id="water-dropdown" class="dropdown-content">
                                 <button onclick="displayChart('water-month-end')">Month End</button>
@@ -205,9 +221,7 @@
         <div class="main-content">
             <div class="dashboardDetailsBody">
                 <h1>Interactive Dashboard</h1>
-                <!-- <div class="mb-4">
-                    <h4>Building Address: 123 Main St, Sustainability City, SC 98765</h4>
-                </div> -->
+               
 
                 <div class="properties-container mb-5">
                     <div id="property1" class="property-item" onclick="selectProperty('property1', '123 Main St', 75, 120, 150, 10, '$5,000', '200 kWh')">
@@ -227,7 +241,7 @@
                     </div>
                 </div>
                 
-            
+                <!-- ENERGY CANVAS MONTH TO END-->
                 <div id="energy-month-end1" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Month End</h2>
                     <canvas id="energyBarChart1" width="500" height="400"></canvas>
@@ -241,77 +255,155 @@
                     <canvas id="energyBarChart3" width="500" height="400"></canvas>
                 </div>
 
+                <!-- ENERGY CANVAS YEAR TO DATE -->
                 <div id="energy-year-to-date1" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Year-to-Date</h2>
                     <canvas id="EnergylineChart1" width="500" height="400"></canvas>
                 </div>
-                
                 <div id="energy-year-to-date2" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Year-to-Date</h2>
                     <canvas id="EnergylineChart2" width="500" height="400"></canvas>
                 </div>
-
                 <div id="energy-year-to-date3" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Year-to-Date</h2>
                     <canvas id="EnergylineChart3" width="500" height="400"></canvas>
                 </div>
                 
+                <!-- ENERGY CANVAS ROLLING TWELVE MONTHS -->
                 <div id="energy-rolling-twelve-months1" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Rolling Twelve Months</h2>
                     <canvas id="rollingChart1" width="500" height="400"></canvas>
                 </div>
-
                 <div id="energy-rolling-twelve-months2" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Rolling Twelve Months</h2>
                     <canvas id="rollingChart2" width="500" height="400"></canvas>
                 </div>
-
                 <div id="energy-rolling-twelve-months3" class="chart">
                     <h2 style="margin-bottom: 5%;">Energy Usage - Rolling Twelve Months</h2>
                     <canvas id="rollingChart3" width="500" height="400"></canvas>
                 </div>
-            
-                <!-- Water Charts Section -->
+
+                <!-- NATURAL GAS CANVAS MONTH TO END -->
+                <div id="natural-gas-month-end1" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Month End</h2>
+                    <canvas id="naturalGasBarChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="natural-gas-month-end2" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Month End</h2>
+                    <canvas id="naturalGasBarChart2" width="500" height="400"></canvas>
+                </div>
+                <div id="natural-gas-month-end3" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Month End</h2>
+                    <canvas id="naturalGasBarChart3" width="500" height="400"></canvas>
+                </div>
+
+                <!-- NATURAL GAS CANVAS YEAR TO DATE -->
+                <div id="natural-gas-year-to-date1" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Year-to-Date</h2>
+                    <canvas id="naturalGasLineChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="natural-gas-year-to-date2" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Year-to-Date</h2>
+                    <canvas id="naturalGasLineChart2" width="500" height="400"></canvas>
+                </div>
+                <div id="natural-gas-year-to-date3" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Year-to-Date</h2>
+                    <canvas id="naturalGasLineChart3" width="500" height="400"></canvas>
+                </div>
+
+                <!-- NATURAL GAS CANVAS ROLLING TWELVE MONTHS -->
+                <div id="natural-gas-rolling-twelve-months1" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Rolling Twelve Months</h2>
+                    <canvas id="naturalGasrollingChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="natural-gas-rolling-twelve-months2" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Rolling Twelve Months</h2>
+                    <canvas id="naturalGasrollingChart2" width="500" height="400"></canvas>
+                </div>
+                <div id="natural-gas-rolling-twelve-months3" class="chart">
+                    <h2 style="margin-bottom: 5%;">Natural Gas Usage - Rolling Twelve Months</h2>
+                    <canvas id="naturalGasrollingChart3" width="500" height="400"></canvas>
+                </div>
+
+                <!-- ELECTRICITY CANVAS MONTH TO END -->
+                <div id="electricity-month-end1" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Month End</h2>
+                    <canvas id="electricityChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="electricity-month-end2" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Month End</h2>
+                    <canvas id="electricityChart2" width="500" height="400"></canvas>
+                </div>
+                <div id="electricity-month-end3" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Month End</h2>
+                    <canvas id="electricityChart3" width="500" height="400"></canvas>
+                </div>
+
+                <!-- ELECTRICITY CANVAS YEAR TO DATE -->
+                <div id="electricity-year-to-date1" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Year-to-Date</h2>
+                    <canvas id="electricityLineChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="electricity-year-to-date2" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Year-to-Date</h2>
+                    <canvas id="electricityLineChart2" width="500" height="400"></canvas>
+                </div>
+                <div id="electricity-year-to-date3" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Year-to-Date</h2>
+                    <canvas id="electricityLineChart3" width="500" height="400"></canvas>
+                </div>
+
+                <!-- ELECTRICITY CANVAS ROLLING TWELVE MONTHS -->
+                <div id="electricity-rolling-twelve-months1" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Rolling Twelve Months</h2>
+                    <canvas id="electricityRollingChart1" width="500" height="400"></canvas>
+                </div>
+                <div id="electricity-rolling-twelve-months2" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Rolling Twelve Months</h2>
+                    <canvas id="electricityRollingChart2" width="500" height="400"></canvas>
+                </div>
+                <div id="electricity-rolling-twelve-months3" class="chart">
+                    <h2 style="margin-bottom: 5%;">Electricity Usage - Rolling Twelve Months</h2>
+                    <canvas id="electricityRollingChart3" width="500" height="400"></canvas>
+                </div>
+
+                <!-- Water CANVAS MONTH TO END -->
                 <div id="water-month-end1" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Month End</h2>
                     <canvas id="waterChart1" width="500" height="400"></canvas>
                 </div>
-
                 <div id="water-month-end2" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Month End</h2>
                     <canvas id="waterChart2" width="500" height="400"></canvas>
                 </div>
-
                 <div id="water-month-end3" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Month End</h2>
                     <canvas id="waterChart3" width="500" height="400"></canvas>
                 </div>
                 
+                <!-- WATER CANVAS YEAR TO DATE  -->
                 <div id="water-year-to-date1" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Year-to-Date</h2>
                     <canvas id="waterLineChart1" width="500" height="400"></canvas>
                 </div>
-
                 <div id="water-year-to-date2" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Year-to-Date</h2>
                     <canvas id="waterLineChart2" width="500" height="400"></canvas>
                 </div>
-
                 <div id="water-year-to-date3" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Year-to-Date</h2>
                     <canvas id="waterLineChart3" width="500" height="400"></canvas>
                 </div>
 
+                <!-- WATER CANVAS ROLLING TWELVE MONTHS -->
                 <div id="water-rolling-twelve-months1" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Rolling Twelve Months</h2>
                     <canvas id="waterRollingChart1" width="500" height="400"></canvas>
                 </div>
-
                 <div id="water-rolling-twelve-months2" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Rolling Twelve Months</h2>
                     <canvas id="waterRollingChart2" width="500" height="400"></canvas>
                 </div>
-
                 <div id="water-rolling-twelve-months3" class="chart">
                     <h2 style="margin-bottom: 5%;">Water Usage - Rolling Twelve Months</h2>
                     <canvas id="waterRollingChart3" width="500" height="400"></canvas>
@@ -348,44 +440,23 @@
                 chart.style.display = 'none';
             });
             //energy
-            if (chartId === 'energy-month-end'){
-                loadEnergyBarChart1(chartId);
+            if (chartId === 'energy-month-end' || chartId === 'electricity-month-end' || chartId === 'natural-gas-month-end' || chartId === 'water-month-end'){
+                loadMonthToEndChart(chartId);
             }
-            if (chartId === 'energy-year-to-date'){
-                loadEnergyLineChart1(chartId);
+            if (chartId === 'energy-year-to-date' || chartId === 'electricity-year-to-date' || chartId === 'natural-gas-year-to-date' || chartId === 'water-year-to-date'){
+                loadYearToDateChart(chartId);
             }
-            if (chartId === 'energy-rolling-twelve-months'){
-                loadRollingChart1(chartId);
-            }
-            //water
-            if (chartId === 'water-month-end'){
-                loadEnergyBarChart1(chartId);
-            }
-            if (chartId === 'water-year-to-date'){
-                loadEnergyLineChart1(chartId);
-            }
-            if (chartId === 'water-rolling-twelve-months'){
-                loadRollingChart1(chartId);
-            }
-            //waste
-            if (chartId === 'waste-month-end'){
-                loadEnergyBarChart1(chartId);
-            }
-            if (chartId === 'waste-year-to-date'){
-                loadEnergyLineChart1(chartId);
-            }
-            if (chartId === 'waste-rolling-twelve-months'){
-                loadRollingChart1(chartId);
+            if (chartId === 'energy-rolling-twelve-months' || chartId === 'electricity-rolling-twelve-months' || chartId === 'natural-gas-rolling-twelve-months' || chartId === 'water-rolling-twelve-months'){
+                loadRollingTwelveMonthsChart(chartId);
             }
         }
     
-        function loadRollingChart1(chartID){
+        function loadRollingTwelveMonthsChart(chartID){
             if(chartID === 'energy-rolling-twelve-months'){
                 
                 const property1Checkbox = document.querySelector('[data-property="property1"]');
                 const property2Checkbox = document.querySelector('[data-property="property2"]');
                 const property3Checkbox = document.querySelector('[data-property="property3"]');
-
 
                 if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)) {
 
@@ -393,6 +464,7 @@
 
                     const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
                     const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
+                    const rollingBenchmark = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling1 = document.getElementById('rollingChart1').getContext('2d');
@@ -402,14 +474,15 @@
                             labels: rollingMonths,
                             datasets: [
                                 { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
-                                { label: 'Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true }
+                                { label: 'Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
+                                { label: 'Energy Benchmark', data: rollingBenchmark, borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage (Units)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -424,6 +497,7 @@
                     const rollingGasUnits2 = [320, 300, 300, 290, 300, 280, 270, 285, 260, 300, 290, 235];
                     const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
                     const rollingElectricUnit2 = [450, 460, 400, 470, 500, 490, 470, 450, 465, 500, 480, 420];
+                    const rollingBenchmark2 = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling2 = document.getElementById('rollingChart2').getContext('2d');
@@ -435,14 +509,15 @@
                                 { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
                                 { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
                                 { label: '123 Main Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
-                                { label: '456 Elm Electric Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true }
+                                { label: '456 Elm Electric Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
+                                { label: 'Energy Benchmark', data: rollingBenchmark2, borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage (Units)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -459,6 +534,7 @@
                     const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
                     const rollingElectricUnit2 = [450, 460, 400, 470, 500, 490, 470, 450, 465, 500, 480, 420];
                     const rollingElectricUnit3 = [350, 360, 300, 370, 400, 390, 370, 350, 365, 300, 380, 320];
+                    const rollingBenchmark3 = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
 
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
@@ -470,10 +546,11 @@
                             datasets: [
                                 { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
                                 { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
-                                { label: '789 Oak Gas Usage (Units)', data: rollingGasUnits3, borderColor: 'red', fill: true },
+                                { label: '789 Oak Gas Usage (Units)', data: rollingGasUnits3, borderColor: 'lightgreen', fill: true },
                                 { label: '123 Main Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
                                 { label: '456 Elm Electric Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
-                                { label: '789 Oak Electric Usage (Units)', data: rollingElectricUnit3, borderColor: 'green', fill: true }
+                                { label: '789 Oak Electric Usage (Units)', data: rollingElectricUnit3, borderColor: 'green', fill: true },
+                                { label: 'Energy Benchmark', data: rollingBenchmark3, borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
@@ -487,8 +564,209 @@
                     });
                     window.location.href = "#energy-rolling-twelve-months3"
                 }
-                 // Rolling Twelve Months Chart (mock data with fluctuations)
-                
+            }
+            if(chartID === 'natural-gas-rolling-twelve-months'){
+                const property1Checkbox = document.querySelector('[data-property="property1"]');
+                const property2Checkbox = document.querySelector('[data-property="property2"]');
+                const property3Checkbox = document.querySelector('[data-property="property3"]');
+
+                if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)) {
+
+                    document.getElementById('natural-gas-rolling-twelve-months1').style.display = 'block';
+
+                    const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+                    const rollingGasBenchmark = [315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315];
+                    const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+                    const ctxRolling1 = document.getElementById('naturalGasrollingChart1').getContext('2d');
+                    const rollingChart1 = new Chart(ctxRolling1, {
+                        type: 'line',
+                        data: {
+                            labels: rollingMonths,
+                            datasets: [
+                                { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
+                                { label: 'Gas Benchmark', data: rollingGasBenchmark, borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage (Units)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-rolling-twelve-months1"
+                }
+                if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+
+                    document.getElementById('natural-gas-rolling-twelve-months2').style.display = 'block';
+
+                    const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+                    const rollingGasUnits2 = [320, 300, 300, 290, 300, 280, 270, 285, 260, 300, 290, 235];
+                    const rollingGasBenchmark2 = [315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315];
+                    const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                    const ctxRolling2 = document.getElementById('naturalGasrollingChart2').getContext('2d');
+                    const rollingChart2 = new Chart(ctxRolling2, {
+                        type: 'line',
+                        data: {
+                            labels: rollingMonths,
+                            datasets: [
+                                { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
+                                { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
+                                { label: 'Gas Benchmark', data: rollingGasBenchmark2, borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage (Units)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-rolling-twelve-months2"
+                }
+
+                if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
+
+                    document.getElementById('natural-gas-rolling-twelve-months3').style.display = 'block';
+
+                    const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+                    const rollingGasUnits2 = [320, 300, 300, 290, 300, 280, 270, 285, 260, 300, 290, 235];
+                    const rollingGasUnits3 = [290, 250, 270, 230, 260, 220, 210, 245, 190, 210, 210, 155];
+                    const rollingGasBenchmark3 = [315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315];
+
+                    const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                    const ctxRolling2 = document.getElementById('naturalGasrollingChart3').getContext('2d');
+                    const rollingChart2 = new Chart(ctxRolling2, {
+                        type: 'line',
+                        data: {
+                            labels: rollingMonths,
+                            datasets: [
+                                { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
+                                { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
+                                { label: '789 Oak Gas Usage (Units)', data: rollingGasUnits3, borderColor: 'green', fill: true },
+                                { label: 'Gas Benchmark', data: rollingGasBenchmark3, borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage (Units)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-rolling-twelve-months3"
+                }
+
+            }
+            if(chartID === 'electricity-rolling-twelve-months'){
+
+                const property1Checkbox = document.querySelector('[data-property="property1"]');
+                const property2Checkbox = document.querySelector('[data-property="property2"]');
+                const property3Checkbox = document.querySelector('[data-property="property3"]');
+
+                if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)) {
+
+                    document.getElementById('electricity-rolling-twelve-months1').style.display = 'block';
+
+                    const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
+                    const rollingElectricBenchmark = [515, 515, 515, 515, 515, 515, 515, 515, 515, 515, 515, 515];
+                    const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                    const ctxRolling1 = document.getElementById('electricityRollingChart1').getContext('2d');
+                    const rollingChart1 = new Chart(ctxRolling1, {
+                        type: 'line',
+                        data: {
+                            labels: rollingMonths,
+                            datasets: [
+                                { label: 'Electricity Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
+                                { label: 'Electricity Benchmark', data: rollingElectricBenchmark, borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage (Units)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-rolling-twelve-months1"
+                }
+                if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+
+                    document.getElementById('electricity-rolling-twelve-months2').style.display = 'block';
+                    const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
+                    const rollingElectricUnit2 = [450, 460, 400, 470, 500, 490, 470, 450, 465, 500, 480, 420];
+                    const rollingElectricBenchmark2 = [515, 515, 515, 515, 515, 515, 515, 515, 515, 515, 515, 515];
+                    const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                    const ctxRolling2 = document.getElementById('electricityRollingChart2').getContext('2d');
+                    const rollingChart2 = new Chart(ctxRolling2, {
+                        type: 'line',
+                        data: {
+                            labels: rollingMonths,
+                            datasets: [
+                                { label: '123 Main Electricity Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
+                                { label: '456 Elm Electricity Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
+                                { label: 'Electricity Benchmark', data: rollingElectricBenchmark2, borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage (Units)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#energy-rolling-twelve-months2"
+                }
+                if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
+
+                    document.getElementById('electricity-rolling-twelve-months3').style.display = 'block';
+
+                    const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
+                    const rollingGasUnits2 = [320, 300, 300, 290, 300, 280, 270, 285, 260, 300, 290, 235];
+                    const rollingGasUnits3 = [290, 250, 270, 230, 260, 220, 210, 245, 190, 210, 210, 155];
+                    const rollingGasBenchmark3 = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
+
+                    const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                    const ctxRolling2 = document.getElementById('electricityRollingChart3').getContext('2d');
+                    const rollingChart2 = new Chart(ctxRolling2, {
+                        type: 'line',
+                        data: {
+                            labels: rollingMonths,
+                            datasets: [
+                                { label: '123 Main Electricity Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
+                                { label: '456 Elm Electricity Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
+                                { label: '789 Oak Electricity Usage (Units)', data: rollingGasUnits3, borderColor: 'green', fill: true },
+                                { label: 'Electricity Benchmark', data: rollingGasBenchmark3, borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage (Units)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-rolling-twelve-months3"
+                }
+
             }
             if(chartID === 'water-rolling-twelve-months'){
                 const property1Checkbox = document.querySelector('[data-property="property1"]');
@@ -501,7 +779,7 @@
                     document.getElementById('water-rolling-twelve-months1').style.display = 'block';
 
                     const rollingWaterUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
-                    const rollingBudgetUnits = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+                    const rollingBudgetUnits = [315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling1 = document.getElementById('waterRollingChart1').getContext('2d');
@@ -511,14 +789,14 @@
                             labels: rollingMonths,
                             datasets: [
                                 { label: 'Water Usage (Units)', data: rollingWaterUnits, borderColor: 'orange', fill: true },
-                                { label: 'Monthly Budget (Units)', data: rollingBudgetUnits, borderColor: 'red', fill: true }
+                                { label: 'Water Benchmark', data: rollingBudgetUnits, borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage (Units)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -530,7 +808,7 @@
 
                     const rollingWaterUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
                     const rollingWaterUnits2 = [320, 300, 350, 360, 370, 350, 380, 295, 360, 380, 390, 395];
-                    const rollingBudgetUnits = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+                    const rollingBudgetUnits = [315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling2 = document.getElementById('waterRollingChart2').getContext('2d');
@@ -541,14 +819,14 @@
                             datasets: [
                                 { label: '123 Main Water Usage (Units)', data: rollingWaterUnits, borderColor: 'orange', fill: true },
                                 { label: '456 Elm Water Usage (Units)', data: rollingWaterUnits2, borderColor: 'blue', fill: true },
-                                { label: 'Monthly Budget (Units)', data: rollingBudgetUnits, borderColor: 'red', fill: true }
+                                { label: 'Water Benchmark', data: rollingBudgetUnits, borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage (Units)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -562,7 +840,7 @@
                     const rollingWaterUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
                     const rollingWaterUnits2 = [320, 300, 350, 360, 370, 350, 380, 295, 360, 380, 390, 395];
                     const rollingWaterUnits3 = [420, 400, 450, 460, 470, 450, 480, 395, 460, 480, 490, 495];
-                    const rollingBudgetUnits = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+                    const rollingBudgetUnits = [315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315, 315];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling3 = document.getElementById('waterRollingChart3').getContext('2d');
@@ -574,14 +852,14 @@
                                 { label: '123 Main Water Usage (Units)', data: rollingWaterUnits, borderColor: 'orange', fill: true },
                                 { label: '456 Elm Water Usage (Units)', data: rollingWaterUnits2, borderColor: 'blue', fill: true },
                                 { label: '789 Oak Water Usage (Units)', data: rollingWaterUnits3, borderColor: 'green', fill: true },
-                                { label: 'Monthly Budget (Units)', data: rollingBudgetUnits, borderColor: 'red', fill: true }
+                                { label: 'Water Benchmark', data: rollingBudgetUnits, borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage (Units)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -594,7 +872,7 @@
             }
         }
     
-        function loadEnergyLineChart1(chartID){
+        function loadYearToDateChart(chartID){
             if(chartID === 'energy-year-to-date'){
 
                 const property1Checkbox = document.querySelector('[data-property="property1"]');
@@ -612,14 +890,15 @@
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
                                 { label: 'Electric Usage (Units)', data: [300, 350, 390, 400, 310, 300], borderColor: 'skyblue', fill: true },
-                                { label: 'Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'orange', fill: true }
+                                { label: 'Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'orange', fill: true },
+                                { label: 'Energy Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage (Units/Dollars)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -638,14 +917,15 @@
                                     { label: '123 Main Electric Usage (Units)', data: [310, 290, 300, 320, 390, 350], borderColor: 'skyblue', fill: true },
                                     { label: '456 Elm Electric Usage (Units)', data: [380, 275, 420, 350, 300, 400], borderColor: 'skyblue', fill: true },
                                     { label: '123 Main Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'orange', fill: true },
-                                    { label: '456 Elm Gas Usage (Units)', data: [180, 380, 200, 450, 190, 370], borderColor: 'orange', fill: true }
+                                    { label: '456 Elm Gas Usage (Units)', data: [180, 380, 200, 450, 190, 370], borderColor: 'orange', fill: true },
+                                    { label: 'Energy Benchmark', data: [320, 320, 320, 320, 320, 320], borderColor: 'red', fill: true }
                                 ]
                             },
                             options: {
                                 responsive: true,
                                 plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                                 scales: {
-                                    y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                                    y: { beginAtZero: true, title: { display: true, text: 'Energy Usage (Units/Dollars)' } },
                                     x: { title: { display: true, text: 'Months' } }
                                 }
                             }
@@ -667,14 +947,15 @@
                                 { label: '789 Oak Electric Usage (Units)', data: [370, 215, 320, 330, 350, 200], borderColor: 'lightgreen', fill: true },
                                 { label: '123 Main Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'blue', fill: true },
                                 { label: '456 Elm Gas Usage (Units)', data: [180, 380, 200, 450, 190, 370], borderColor: 'orange', fill: true },
-                                { label: '789 Oak Gas Usage (Units)', data: [280, 280, 100, 350, 290, 270], borderColor: 'green', fill: true }
+                                { label: '789 Oak Gas Usage (Units)', data: [280, 280, 100, 350, 290, 270], borderColor: 'green', fill: true },
+                                { label: '789 Oak Gas Usage (Units)', data: [320, 320, 320, 320, 320, 320], borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage (Units/Dollars)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -702,14 +983,14 @@
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
                                 { label: 'Water Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
-                                { label: 'Monthly Budget (Units)', data: [400, 400, 400, 400, 400, 400], borderColor: 'red', fill: true }
+                                { label: 'Water Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage (Units/Dollars)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -727,14 +1008,14 @@
                             datasets: [
                                 { label: '123 Main Water Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
                                 { label: '456 Elm Water Usage (Units)', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
-                                { label: 'Montly Budget (Units)', data: [400, 400, 400, 400, 400, 400], borderColor: 'red', fill: true }
+                                { label: 'Water Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage (Units/Dollars)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -753,14 +1034,14 @@
                                 { label: '123 Main Water Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
                                 { label: '456 Elm Water Usage (Units)', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
                                 { label: '789 Oak Water Usage (Units)', data: [380, 420, 400, 380, 350, 320], borderColor: 'green', fill: true },
-                                { label: 'Montly Budget (Units)', data: [400, 400, 400, 400, 400, 400], borderColor: 'red', fill: true }
+                                { label: 'Water Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
                             responsive: true,
                             plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Usage (Units/Dollars)' } },
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage (Units/Dollars)' } },
                                 x: { title: { display: true, text: 'Months' } }
                             }
                         }
@@ -769,10 +1050,171 @@
                 }
                 // Energy Line Chart
             }
-            
+            if(chartID === 'electricity-year-to-date'){
+                const property1Checkbox = document.querySelector('[data-property="property1"]');
+                const property2Checkbox = document.querySelector('[data-property="property2"]');
+                const property3Checkbox = document.querySelector('[data-property="property3"]');
+
+                if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+                    document.getElementById('electricity-year-to-date1').style.display = 'block';
+
+                    const ctxLine = document.getElementById('electricityLineChart1').getContext('2d');
+                    const lineChart = new Chart(ctxLine, {
+                        type: 'line',
+                        data: {
+                            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [
+                                { label: 'Electricity', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: 'Electricity Benchmarch', data: [400, 400, 400, 400, 400, 400], borderColor: 'red', fill: true },
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage (Units/Dollars)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-year-to-date1"
+                }
+                if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+                    document.getElementById('electricity-year-to-date2').style.display = 'block';
+
+                    const ctxLine2 = document.getElementById('electricityLineChart2').getContext('2d');
+                    const lineChart2 = new Chart(ctxLine2, {
+                        type: 'line',
+                        data: {
+                            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [
+                                { label: '123 Main Electricity', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '456 Elm Electricity', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: 'Electricity Benchmark', data: [325, 325, 325, 325, 325, 325], borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage (Units/Dollars)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-year-to-date2"
+                }
+                if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
+                    document.getElementById('electricity-year-to-date3').style.display = 'block';
+
+                    const ctxLine3 = document.getElementById('electricityLineChart3').getContext('2d');
+                    const lineChart3 = new Chart(ctxLine3, {
+                        type: 'line',
+                        data: {
+                            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [
+                                { label: '123 Main Electricity', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '456 Elm Electricity', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: '789 Oak Electricity', data: [380, 420, 400, 380, 350, 320], borderColor: 'green', fill: true },
+                                { label: 'Electricity Benchmark', data: [325, 325, 325, 325, 325, 325], borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage (Units/Dollars)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-year-to-date3"
+                }
+            }
+            if(chartID === 'natural-gas-year-to-date'){
+                const property1Checkbox = document.querySelector('[data-property="property1"]');
+                const property2Checkbox = document.querySelector('[data-property="property2"]');
+                const property3Checkbox = document.querySelector('[data-property="property3"]');
+
+                if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+                    document.getElementById('natural-gas-year-to-date1').style.display = 'block';
+
+                    const ctxLine = document.getElementById('naturalGasLineChart1').getContext('2d');
+                    const lineChart = new Chart(ctxLine, {
+                        type: 'line',
+                        data: {
+                            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [
+                                { label: 'Natutal Gas', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: 'Natutal Gas Benchmarch', data: [400, 400, 400, 400, 400, 400], borderColor: 'red', fill: true },
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage (Units/Dollars)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-year-to-date1"
+                }
+                if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+                    document.getElementById('natural-gas-year-to-date2').style.display = 'block';
+
+                    const ctxLine2 = document.getElementById('naturalGasLineChart2').getContext('2d');
+                    const lineChart2 = new Chart(ctxLine2, {
+                        type: 'line',
+                        data: {
+                            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [
+                                { label: '123 Main Natural Gas', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '456 Elm Natural Gas', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: 'Natural Gas Benchmark', data: [325, 325, 325, 325, 325, 325], borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage (Units/Dollars)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-year-to-date2"
+                }
+                if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
+                    document.getElementById('natural-gas-year-to-date3').style.display = 'block';
+
+                    const ctxLine3 = document.getElementById('naturalGasLineChart3').getContext('2d');
+                    const lineChart3 = new Chart(ctxLine3, {
+                        type: 'line',
+                        data: {
+                            labels: ['July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [
+                                { label: '123 Main Natural Gas', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '456 Elm Natural Gas', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: '789 Oak Natural Gas', data: [380, 420, 400, 380, 350, 320], borderColor: 'green', fill: true },
+                                { label: 'Natural Gas Benchmark', data: [325, 325, 325, 325, 325, 325], borderColor: 'red', fill: true }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'bottom' }, tooltip: { enabled: true } },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage (Units/Dollars)' } },
+                                x: { title: { display: true, text: 'Months' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-year-to-date3"
+                }
+            }
         }
         
-        function loadEnergyBarChart1(chartID) {
+        function loadMonthToEndChart(chartID) {
             if (chartID === 'energy-month-end'){
                 // Select the checkboxes for the first two properties
                 const property1Checkbox = document.querySelector('[data-property="property1"]');
@@ -785,8 +1227,8 @@
 
                     document.getElementById('energy-month-end1').style.display = 'block';
 
-                    const singleunitData = [3200, 4500, 7700]; // Gas, Electricity, Cumulative Total (in units)
-                    const singlelabels = ['Gas', 'Electricity', 'Cumulative Total'];
+                    const singleunitData = [3200, 4500, 8000]; // Gas, Electricity, Cumulative Total (in units)
+                    const singlelabels = ['Gas', 'Electricity', 'Energy Benchmark'];
                     const singlecolors = ['orange', 'skyblue', 'green'];
 
                     const ctxBar1 = document.getElementById('energyBarChart1').getContext('2d');
@@ -818,9 +1260,9 @@
 
                     document.getElementById('energy-month-end2').style.display = 'block';
 
-                    const doubleUnitData = [3200, 3000, 4500, 3850, 7700, 6850]; // Gas, Electricity, Cumulative Total (in units)
-                    const doubleLabels = ['123 Main Gas', '456 Elm Gas', '123 Main Electricity', '456 Elm Electricity', '123 Main Cumulative Total', '456 Elm cumulative Total'];
-                    const doubleColors = ['skyblue', 'blue', 'skyblue', 'blue', 'skyblue', 'blue'];
+                    const doubleUnitData = [3200, 3000, 4500, 3850, 8000]; // Gas, Electricity, Cumulative Total (in units)
+                    const doubleLabels = ['123 Main Gas', '456 Elm Gas', '123 Main Electricity', '456 Elm Electricity', 'Energy Benchmark'];
+                    const doubleColors = ['skyblue', 'blue', 'skyblue', 'blue', 'red'];
                     
                     const ctxBar2 = document.getElementById('energyBarChart2').getContext('2d');
                     const energyChart2 = new Chart(ctxBar2, {
@@ -849,9 +1291,9 @@
                 if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
                     document.getElementById('energy-month-end3').style.display = 'block';
 
-                    const tripleUnitData = [3200, 3000,2500,  4500, 3850, 4200, 7700, 6850, 6700]; // Gas, Electricity, Cumulative Total (in units)
-                    const tripleLabels = ['123 Main Gas', '456 Elm Gas', '789 Oak Gas', '123 Main Electricity', '456 Elm Electricity', '789 Oak Electricity', '123 Main Cumulative Total', '456 Elm cumulative Total','789 Oak Cumulative Total' ];
-                    const tripleColors = ['skyblue', 'blue', 'green', 'skyblue', 'blue', 'green', 'skyblue', 'blue', 'green'];
+                    const tripleUnitData = [3200, 3000,2500,  4500, 3850, 4200, 8000]; // Gas, Electricity, Cumulative Total (in units)
+                    const tripleLabels = ['123 Main Gas', '456 Elm Gas', '789 Oak Gas', '123 Main Electricity', '456 Elm Electricity', '789 Oak Electricity', 'Energy Benchmark' ];
+                    const tripleColors = ['skyblue', 'blue', 'green', 'skyblue', 'blue','green', 'red'];
                     
                     const ctxBar3 = document.getElementById('energyBarChart3').getContext('2d');
                     const energyChart3 = new Chart(ctxBar3, {
@@ -879,6 +1321,216 @@
                 }
             }
     
+            if (chartID === 'natural-gas-month-end'){
+                // Select the checkboxes for the first two properties
+                const property1Checkbox = document.querySelector('[data-property="property1"]');
+                const property2Checkbox = document.querySelector('[data-property="property2"]');
+                const property3Checkbox = document.querySelector('[data-property="property3"]');
+
+
+                // Check if property1 and property2 are selected, and property3 is not selected
+                if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)) {
+
+                    document.getElementById('natural-gas-month-end1').style.display = 'block';
+
+                    const singleunitData = [3200, 4500, 1300]; // Gas, Electricity, Cumulative Total (in units)
+                    const singlelabels = ['Current Month', 'Gas Benchmark', 'Delta'];
+                    const singlecolors = ['orange', 'skyblue', 'green'];
+
+                    const ctxBar1 = document.getElementById('naturalGasBarChart1').getContext('2d');
+                    const energyChart1 = new Chart(ctxBar1, {
+                        type: 'bar',
+                        data: {
+                            labels: singlelabels,
+                            datasets: [{
+                                label: '', // No legend label
+                                data: singleunitData,
+                                backgroundColor: singlecolors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-month-end1"
+                }
+               
+                if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+
+                    document.getElementById('natural-gas-month-end2').style.display = 'block';
+
+                    const doubleUnitData = [3200, 3000, 7700]; // Gas, Electricity, Cumulative Total (in units)
+                    const doubleLabels = ['123 Main Gas', '456 Elm Gas', 'Gas Benchmark'];
+                    const doubleColors = ['skyblue', 'blue', 'red'];
+                    
+                    const ctxBar2 = document.getElementById('naturalGasBarChart2').getContext('2d');
+                    const energyChart2 = new Chart(ctxBar2, {
+                        type: 'bar',
+                        data: {
+                            labels: doubleLabels,
+                            datasets: [{
+                                label: '', // No legend label
+                                data: doubleUnitData,
+                                backgroundColor: doubleColors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-month-end2"
+                }
+                if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
+                    document.getElementById('natural-gas-month-end3').style.display = 'block';
+
+                    const tripleUnitData = [3200, 3000,2500, 4000]; // Gas, Electricity, Cumulative Total (in units)
+                    const tripleLabels = ['123 Main Gas', '456 Elm Gas', '789 Oak Gas','Gas Benchmark' ];
+                    const tripleColors = ['skyblue', 'blue', 'green', 'red'];
+                    
+                    const ctxBar3 = document.getElementById('naturalGasBarChart3').getContext('2d');
+                    const energyChart3 = new Chart(ctxBar3, {
+                        type: 'bar',
+                        data: {
+                            labels: tripleLabels,
+                            datasets: [{
+                                label: '', // No legend label
+                                data: tripleUnitData,
+                                backgroundColor: tripleColors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Natural Gas Usage' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#natural-gas-month-end3"
+                }
+            }
+
+            if (chartID === 'electricity-month-end'){
+                const property1Checkbox = document.querySelector('[data-property="property1"]');
+                const property2Checkbox = document.querySelector('[data-property="property2"]');
+                const property3Checkbox = document.querySelector('[data-property="property3"]');
+
+                if ((property1Checkbox.checked && !property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)) {
+
+                    document.getElementById('electricity-month-end1').style.display = 'block';
+
+                    const unitData = [3200, 3500]; // Gas, Electricity, Cumulative Total (in units)
+                    const labels = ['123 Main Electricity Usage', 'Electricity Benchmark'];
+                    const colors = ['orange', 'red'];
+        
+                    // Energy Bar Chart
+                    const ctxBar = document.getElementById('electricityChart1').getContext('2d');
+                    const energyChart = new Chart(ctxBar, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '', // No legend label
+                                data: unitData,
+                                backgroundColor: colors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-month-end1"
+                }
+                if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
+                    document.getElementById('electricity-month-end2').style.display = 'block';
+
+                    const unitData = [3200, 2900, 3500]; // Gas, Electricity, Cumulative Total (in units)
+                    const labels = ['123 Main Electricity Usage', '456 Elm Electricity Usage', 'Electricity Benchmark'];
+                    const colors = ['orange', 'yellow', 'red'];
+        
+                    // Energy Bar Chart
+                    const ctxBar2 = document.getElementById('electricityChart2').getContext('2d');
+                    const energyChart2 = new Chart(ctxBar2, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '', // No legend label
+                                data: unitData,
+                                backgroundColor: colors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage' } }
+                            }
+                        }
+                    });
+                    window.location.href = "#electricity-month-end2"
+                }
+                if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
+                    document.getElementById('electricity-month-end3').style.display = 'block';
+
+                    const unitData = [3200, 2900, 2500, 3500]; // Gas, Electricity, Cumulative Total (in units)
+                    const labels = ['123 Main Electricity Usage', '456 Elm Electricity Usage', '789 Oak Electricity Usage', 'Electricity Benchmark'];
+                    const colors = ['orange', 'yellow', 'green', 'red'];
+
+                    // Energy Bar Chart
+                    const ctxBar3 = document.getElementById('electricityChart3').getContext('2d');
+                    const energyChart3 = new Chart(ctxBar3, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: '', // No legend label
+                                data: unitData,
+                                backgroundColor: colors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: true }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, title: { display: true, text: 'Electricity Usage' } }
+                            }
+                        }
+                    }); 
+                    window.location.href = "#electricity-month-end3"
+                }
+            }
+
             if (chartID === 'water-month-end'){
 
                 const property1Checkbox = document.querySelector('[data-property="property1"]');
@@ -889,8 +1541,8 @@
 
                     document.getElementById('water-month-end1').style.display = 'block';
 
-                    const unitData = [3200, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Water Usage', 'Monthly Budget'];
+                    const unitData = [2800, 3500]; // Gas, Electricity, Cumulative Total (in units)
+                    const labels = ['123 Main Water Usage', 'Water Benchmark'];
                     const colors = ['orange', 'red'];
         
                     // Energy Bar Chart
@@ -912,17 +1564,17 @@
                                 tooltip: { enabled: true }
                             },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage' } }
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage' } }
                             }
                         }
                     });
-
+                    window.location.href = "#water-month-end1"
                 }
                 if ((property1Checkbox.checked && property2Checkbox.checked && !property3Checkbox.checked) || (!property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked) || (property1Checkbox.checked && !property2Checkbox.checked && property3Checkbox.checked)){
                     document.getElementById('water-month-end2').style.display = 'block';
 
                     const unitData = [3200, 2900, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Water Usage', '456 Elm Water Usage', 'Monthly Budget'];
+                    const labels = ['123 Main Water Usage', '456 Elm Water Usage', 'Water Benchmark'];
                     const colors = ['orange', 'yellow', 'red'];
         
                     // Energy Bar Chart
@@ -944,16 +1596,17 @@
                                 tooltip: { enabled: true }
                             },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage' } }
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage' } }
                             }
                         }
                     });
+                    window.location.href = "#water-month-end2"
                 }
                 if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
                     document.getElementById('water-month-end3').style.display = 'block';
 
                     const unitData = [3200, 2900, 2500, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Water Usage', '456 Elm Water Usage', '789 Oak Water Usage', 'Monthly Budget'];
+                    const labels = ['123 Main Water Usage', '456 Elm Water Usage', '789 Oak Water Usage', 'Water Benchmark'];
                     const colors = ['orange', 'yellow', 'green', 'red'];
 
                     // Energy Bar Chart
@@ -975,10 +1628,11 @@
                                 tooltip: { enabled: true }
                             },
                             scales: {
-                                y: { beginAtZero: true, title: { display: true, text: 'Energy Usage' } }
+                                y: { beginAtZero: true, title: { display: true, text: 'Water Usage' } }
                             }
                         }
                     }); 
+                    window.location.href = "#water-month-end3"
                 }
             }
         }
