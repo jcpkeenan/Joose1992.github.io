@@ -462,9 +462,8 @@
 
                     document.getElementById('energy-rolling-twelve-months1').style.display = 'block';
 
-                    const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
-                    const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
-                    const rollingBenchmark = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+                    const rollingGasUnits = [310, 280, 330, 270, 310, 300, 290, 250, 280, 310, 300, 295];
+                    const rollingBenchmark = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling1 = document.getElementById('rollingChart1').getContext('2d');
@@ -473,8 +472,7 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
-                                { label: 'Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
+                                { label: 'Current Month', data: rollingGasUnits, borderColor: 'orange', fill: true },
                                 { label: 'Energy Benchmark', data: rollingBenchmark, borderColor: 'red', fill: true }
                             ]
                         },
@@ -494,10 +492,8 @@
 
                     document.getElementById('energy-rolling-twelve-months2').style.display = 'block';
                     const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
-                    const rollingGasUnits2 = [320, 300, 300, 290, 300, 280, 270, 285, 260, 300, 290, 235];
-                    const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
-                    const rollingElectricUnit2 = [450, 460, 400, 470, 500, 490, 470, 450, 465, 500, 480, 420];
-                    const rollingBenchmark2 = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+                    const rollingElectricUnits = [295, 310, 320, 310, 300, 280, 290, 300, 295, 300, 310, 300];
+                    const rollingBenchmark2 = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
                     const ctxRolling2 = document.getElementById('rollingChart2').getContext('2d');
@@ -506,10 +502,8 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
-                                { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
-                                { label: '123 Main Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
-                                { label: '456 Elm Electric Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
+                                { label: '1st Property', data: rollingGasUnits, borderColor: 'yellow', fill: true },
+                                { label: '2nd Property', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
                                 { label: 'Energy Benchmark', data: rollingBenchmark2, borderColor: 'red', fill: true }
                             ]
                         },
@@ -531,10 +525,7 @@
                     const rollingGasUnits = [300, 290, 330, 310, 320, 300, 310, 305, 320, 330, 310, 295];
                     const rollingGasUnits2 = [320, 300, 300, 290, 300, 280, 270, 285, 260, 300, 290, 235];
                     const rollingGasUnits3 = [290, 250, 270, 230, 260, 220, 210, 245, 190, 210, 210, 155];
-                    const rollingElectricUnits = [500, 510, 490, 520, 540, 530, 510, 520, 525, 530, 510, 500];
-                    const rollingElectricUnit2 = [450, 460, 400, 470, 500, 490, 470, 450, 465, 500, 480, 420];
-                    const rollingElectricUnit3 = [350, 360, 300, 370, 400, 390, 370, 350, 365, 300, 380, 320];
-                    const rollingBenchmark3 = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+                    const rollingBenchmark3 = [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300];
 
                     const rollingMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         
@@ -544,12 +535,9 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
-                                { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
-                                { label: '789 Oak Gas Usage (Units)', data: rollingGasUnits3, borderColor: 'lightgreen', fill: true },
-                                { label: '123 Main Electric Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
-                                { label: '456 Elm Electric Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
-                                { label: '789 Oak Electric Usage (Units)', data: rollingElectricUnit3, borderColor: 'green', fill: true },
+                                { label: '123 Main Energy Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
+                                { label: '456 Elm Energy Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
+                                { label: '789 Oak Energy Usage (Units)', data: rollingGasUnits3, borderColor: 'lightgreen', fill: true },
                                 { label: 'Energy Benchmark', data: rollingBenchmark3, borderColor: 'red', fill: true }
                             ]
                         },
@@ -584,7 +572,7 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: 'Gas Usage (Units)', data: rollingGasUnits, borderColor: 'orange', fill: true },
+                                { label: 'Current Month', data: rollingGasUnits, borderColor: 'orange', fill: true },
                                 { label: 'Gas Benchmark', data: rollingGasBenchmark, borderColor: 'red', fill: true }
                             ]
                         },
@@ -614,8 +602,8 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: '123 Main Gas Usage (Units)', data: rollingGasUnits, borderColor: 'yellow', fill: true },
-                                { label: '456 Elm Gas Usage (Units)', data: rollingGasUnits2, borderColor: 'orange', fill: true },
+                                { label: '1st Property', data: rollingGasUnits, borderColor: 'yellow', fill: true },
+                                { label: '2nd Property', data: rollingGasUnits2, borderColor: 'orange', fill: true },
                                 { label: 'Gas Benchmark', data: rollingGasBenchmark2, borderColor: 'red', fill: true }
                             ]
                         },
@@ -687,7 +675,7 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: 'Electricity Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
+                                { label: 'Current Month', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
                                 { label: 'Electricity Benchmark', data: rollingElectricBenchmark, borderColor: 'red', fill: true }
                             ]
                         },
@@ -716,8 +704,8 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: '123 Main Electricity Usage (Units)', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
-                                { label: '456 Elm Electricity Usage (Units)', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
+                                { label: '1st Property', data: rollingElectricUnits, borderColor: 'skyblue', fill: true },
+                                { label: '2nd Property', data: rollingElectricUnit2, borderColor: 'blue', fill: true },
                                 { label: 'Electricity Benchmark', data: rollingElectricBenchmark2, borderColor: 'red', fill: true }
                             ]
                         },
@@ -817,8 +805,8 @@
                         data: {
                             labels: rollingMonths,
                             datasets: [
-                                { label: '123 Main Water Usage (Units)', data: rollingWaterUnits, borderColor: 'orange', fill: true },
-                                { label: '456 Elm Water Usage (Units)', data: rollingWaterUnits2, borderColor: 'blue', fill: true },
+                                { label: '1st Property', data: rollingWaterUnits, borderColor: 'orange', fill: true },
+                                { label: '2nd Property', data: rollingWaterUnits2, borderColor: 'blue', fill: true },
                                 { label: 'Water Benchmark', data: rollingBudgetUnits, borderColor: 'red', fill: true }
                             ]
                         },
@@ -889,8 +877,7 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: 'Electric Usage (Units)', data: [300, 350, 390, 400, 310, 300], borderColor: 'skyblue', fill: true },
-                                { label: 'Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'orange', fill: true },
+                                { label: 'Current Month', data: [270, 335, 300, 295, 340, 330], borderColor: 'skyblue', fill: true },
                                 { label: 'Energy Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
@@ -914,10 +901,8 @@
                             data: {
                                 labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                                 datasets: [
-                                    { label: '123 Main Electric Usage (Units)', data: [310, 290, 300, 320, 390, 350], borderColor: 'skyblue', fill: true },
-                                    { label: '456 Elm Electric Usage (Units)', data: [380, 275, 420, 350, 300, 400], borderColor: 'skyblue', fill: true },
-                                    { label: '123 Main Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'orange', fill: true },
-                                    { label: '456 Elm Gas Usage (Units)', data: [180, 380, 200, 450, 190, 370], borderColor: 'orange', fill: true },
+                                    { label: '1st Property', data: [310, 290, 300, 320, 390, 350], borderColor: 'skyblue', fill: true },
+                                    { label: '2nd Property', data: [380, 275, 420, 350, 300, 400], borderColor: 'blue', fill: true },
                                     { label: 'Energy Benchmark', data: [320, 320, 320, 320, 320, 320], borderColor: 'red', fill: true }
                                 ]
                             },
@@ -942,13 +927,10 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: '123 Main Electric Usage (Units)', data: [310, 290, 300, 320, 390, 350], borderColor: 'skyblue', fill: true },
-                                { label: '456 Elm Electric Usage (Units)', data: [380, 275, 420, 350, 300, 400], borderColor: 'yellow', fill: true },
-                                { label: '789 Oak Electric Usage (Units)', data: [370, 215, 320, 330, 350, 200], borderColor: 'lightgreen', fill: true },
-                                { label: '123 Main Gas Usage (Units)', data: [200, 420, 190, 510, 230, 400], borderColor: 'blue', fill: true },
-                                { label: '456 Elm Gas Usage (Units)', data: [180, 380, 200, 450, 190, 370], borderColor: 'orange', fill: true },
-                                { label: '789 Oak Gas Usage (Units)', data: [280, 280, 100, 350, 290, 270], borderColor: 'green', fill: true },
-                                { label: '789 Oak Gas Usage (Units)', data: [320, 320, 320, 320, 320, 320], borderColor: 'red', fill: true }
+                                { label: '123 Main Energy Usage (Units)', data: [310, 290, 300, 320, 390, 350], borderColor: 'skyblue', fill: true },
+                                { label: '456 Elm Energy Usage (Units)', data: [380, 275, 420, 350, 300, 400], borderColor: 'yellow', fill: true },
+                                { label: '789 Oak Energy Usage (Units)', data: [370, 265, 320, 330, 350, 280], borderColor: 'lightgreen', fill: true },
+                                { label: 'Energy Benchmark (Units)', data: [320, 320, 320, 320, 320, 320], borderColor: 'red', fill: true }
                             ]
                         },
                         options: {
@@ -982,7 +964,7 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: 'Water Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: 'Current Month', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
                                 { label: 'Water Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
@@ -1006,8 +988,8 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: '123 Main Water Usage (Units)', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
-                                { label: '456 Elm Water Usage (Units)', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: '1st Property', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '2nd Property', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
                                 { label: 'Water Benchmark', data: [315, 315, 315, 315, 315, 315], borderColor: 'red', fill: true }
                             ]
                         },
@@ -1064,7 +1046,7 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: 'Electricity', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: 'Current Month', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
                                 { label: 'Electricity Benchmarch', data: [400, 400, 400, 400, 400, 400], borderColor: 'red', fill: true },
                             ]
                         },
@@ -1088,8 +1070,8 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: '123 Main Electricity', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
-                                { label: '456 Elm Electricity', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: '1st Property', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '2nd Property', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
                                 { label: 'Electricity Benchmark', data: [325, 325, 325, 325, 325, 325], borderColor: 'red', fill: true }
                             ]
                         },
@@ -1169,8 +1151,8 @@
                         data: {
                             labels: ['July', 'August', 'September', 'October', 'November', 'December'],
                             datasets: [
-                                { label: '123 Main Natural Gas', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
-                                { label: '456 Elm Natural Gas', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
+                                { label: '1st Property', data: [300, 320, 290, 310, 330, 300], borderColor: 'orange', fill: true },
+                                { label: '2nd Property', data: [350, 370, 390, 410, 380, 400], borderColor: 'yellow', fill: true },
                                 { label: 'Natural Gas Benchmark', data: [325, 325, 325, 325, 325, 325], borderColor: 'red', fill: true }
                             ]
                         },
@@ -1227,8 +1209,8 @@
 
                     document.getElementById('energy-month-end1').style.display = 'block';
 
-                    const singleunitData = [3200, 4500, 8000]; // Gas, Electricity, Cumulative Total (in units)
-                    const singlelabels = ['Gas', 'Electricity', 'Energy Benchmark'];
+                    const singleunitData = [3200, 4500]; // Gas, Electricity, Cumulative Total (in units)
+                    const singlelabels = ['Current Month', 'Energy Benchmark'];
                     const singlecolors = ['orange', 'skyblue', 'green'];
 
                     const ctxBar1 = document.getElementById('energyBarChart1').getContext('2d');
@@ -1260,9 +1242,9 @@
 
                     document.getElementById('energy-month-end2').style.display = 'block';
 
-                    const doubleUnitData = [3200, 3000, 4500, 3850, 8000]; // Gas, Electricity, Cumulative Total (in units)
-                    const doubleLabels = ['123 Main Gas', '456 Elm Gas', '123 Main Electricity', '456 Elm Electricity', 'Energy Benchmark'];
-                    const doubleColors = ['skyblue', 'blue', 'skyblue', 'blue', 'red'];
+                    const doubleUnitData = [4500, 3850, 8000]; // Gas, Electricity, Cumulative Total (in units)
+                    const doubleLabels = ['1st Property', '2nd Property', 'Energy Benchmark'];
+                    const doubleColors = ['skyblue', 'blue', 'red'];
                     
                     const ctxBar2 = document.getElementById('energyBarChart2').getContext('2d');
                     const energyChart2 = new Chart(ctxBar2, {
@@ -1291,9 +1273,9 @@
                 if (property1Checkbox.checked && property2Checkbox.checked && property3Checkbox.checked){
                     document.getElementById('energy-month-end3').style.display = 'block';
 
-                    const tripleUnitData = [3200, 3000,2500,  4500, 3850, 4200, 8000]; // Gas, Electricity, Cumulative Total (in units)
-                    const tripleLabels = ['123 Main Gas', '456 Elm Gas', '789 Oak Gas', '123 Main Electricity', '456 Elm Electricity', '789 Oak Electricity', 'Energy Benchmark' ];
-                    const tripleColors = ['skyblue', 'blue', 'green', 'skyblue', 'blue','green', 'red'];
+                    const tripleUnitData = [ 4500, 3850, 4200, 5500]; // Gas, Electricity, Cumulative Total (in units)
+                    const tripleLabels = ['123 Main Energy', '456 Elm Energy', '789 Energy','Energy Benchmark' ];
+                    const tripleColors = ['skyblue', 'blue', 'green','red'];
                     
                     const ctxBar3 = document.getElementById('energyBarChart3').getContext('2d');
                     const energyChart3 = new Chart(ctxBar3, {
@@ -1333,9 +1315,9 @@
 
                     document.getElementById('natural-gas-month-end1').style.display = 'block';
 
-                    const singleunitData = [3200, 4500, 1300]; // Gas, Electricity, Cumulative Total (in units)
-                    const singlelabels = ['Current Month', 'Gas Benchmark', 'Delta'];
-                    const singlecolors = ['orange', 'skyblue', 'green'];
+                    const singleunitData = [3200, 4500]; // Gas, Electricity, Cumulative Total (in units)
+                    const singlelabels = ['Current Month', 'Gas Benchmark'];
+                    const singlecolors = ['orange', 'red'];
 
                     const ctxBar1 = document.getElementById('naturalGasBarChart1').getContext('2d');
                     const energyChart1 = new Chart(ctxBar1, {
@@ -1367,7 +1349,7 @@
                     document.getElementById('natural-gas-month-end2').style.display = 'block';
 
                     const doubleUnitData = [3200, 3000, 7700]; // Gas, Electricity, Cumulative Total (in units)
-                    const doubleLabels = ['123 Main Gas', '456 Elm Gas', 'Gas Benchmark'];
+                    const doubleLabels = ['1st Property Gas', '2nd Property Gas', 'Gas Benchmark'];
                     const doubleColors = ['skyblue', 'blue', 'red'];
                     
                     const ctxBar2 = document.getElementById('naturalGasBarChart2').getContext('2d');
@@ -1437,7 +1419,7 @@
                     document.getElementById('electricity-month-end1').style.display = 'block';
 
                     const unitData = [3200, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Electricity Usage', 'Electricity Benchmark'];
+                    const labels = ['Current Month', 'Electricity Benchmark'];
                     const colors = ['orange', 'red'];
         
                     // Energy Bar Chart
@@ -1469,7 +1451,7 @@
                     document.getElementById('electricity-month-end2').style.display = 'block';
 
                     const unitData = [3200, 2900, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Electricity Usage', '456 Elm Electricity Usage', 'Electricity Benchmark'];
+                    const labels = ['1st Property Usage', '2nd Property Usage', 'Electricity Benchmark'];
                     const colors = ['orange', 'yellow', 'red'];
         
                     // Energy Bar Chart
@@ -1542,7 +1524,7 @@
                     document.getElementById('water-month-end1').style.display = 'block';
 
                     const unitData = [2800, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Water Usage', 'Water Benchmark'];
+                    const labels = ['Current Month', 'Water Benchmark'];
                     const colors = ['orange', 'red'];
         
                     // Energy Bar Chart
@@ -1574,7 +1556,7 @@
                     document.getElementById('water-month-end2').style.display = 'block';
 
                     const unitData = [3200, 2900, 3500]; // Gas, Electricity, Cumulative Total (in units)
-                    const labels = ['123 Main Water Usage', '456 Elm Water Usage', 'Water Benchmark'];
+                    const labels = ['1st Property', '2nd Property', 'Water Benchmark'];
                     const colors = ['orange', 'yellow', 'red'];
         
                     // Energy Bar Chart
