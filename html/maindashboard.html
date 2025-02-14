@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" style="color:white; font-size: 30px;" href="index.html"><span> <img height="45px" width="45px" src="images/logo.png"> Senergy</span></a>
+                <a class="navbar-brand" style="color:white; font-size: 30px;" href="landingPage.html"><span> <img height="45px" width="45px" src="images/logo.png"> Senergy</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -111,6 +111,29 @@
                 margin-right: 10px;
             }
 
+            .alert-container {
+            background-color: #FEF2F2;
+            border-radius: 65px;
+            border: red;
+            border-width: 5px;
+            padding: 10px 5px;
+            display: inline-block;
+        }
+        
+        .horizontal-stack {
+            display: flex;
+            align-items: center;
+            vertical-align:middle;
+            gap: 5px;
+        }
+        
+        .energy-alert {
+            font-size: 12px;
+            color: #DC2626;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
         </style>
     </header>
 
@@ -127,18 +150,22 @@
             </div>
     
             <!-- Property 1 -->
-            <div id="property1" class="property selected" onclick="selectProperty('property1', '123 Main St', '75/A', 120, 150, 10, '$5,000', '200 kWh')">
+            <div id="property1" class="property selected" onclick="selectProperty('property1', '123 Main St', '75/A', 120, 150, 10, '$5,000', '$1,200')">
                 <h3>123 Main St</h3>
                 <div class="checkbox-alert">
                     <div class="alert-message">
-                        <img src="images/danger.png" height="35px"/>
-                        <p class="alerts">Alert: High Energy usage!</p>
+                        <div class="alert-container">
+                            <div class="horizontal-stack">
+                                <img src="images/danger.png" height="25px"/>
+                                <span class="energy-alert">High Energy usage!</span>
+                            </div>
+                        </div>
                     </div>
                     <input type="checkbox" class="property-checkbox" data-property="property1"/>
                 </div>
             </div>
             <!-- Property 2 -->
-            <div id="property2" class="property" onclick="selectProperty('property2', '456 Elm St', '85/B', 110, 135, 8, '$6,500', '250 kWh')">
+            <div id="property2" class="property" onclick="selectProperty('property2', '456 Elm St', '85/B', 110, 135, 8, '$6,500', '$2,500')">
                 <h3>456 Elm St</h3>
                 <div class="checkbox-alert">
                     <div class="alert-message">
@@ -149,12 +176,18 @@
                 <input type="checkbox" class="property-checkbox" data-property="property2"/>
             </div>
             <!-- Property 3 -->
-            <div id="property3" class="property" onclick="selectProperty('property3', '789 Oak St', '65/C', 130, 115, 12, '$4,000', '300 kWh')">
+            <div id="property3" class="property" onclick="selectProperty('property3', '789 Oak St', '65/C', 130, 115, 12, '$4,000', '$3,000')">
                 <h3>789 Oak St</h3>
                 <div class="checkbox-alert">
                     <div class="alert-message">
-                        <img src="images/danger.png" height="35px"/>
-                        <p class="alerts">Alert: Pending updates</p>
+                        <div class="alert-container">
+                            <div class="horizontal-stack">
+                                <img src="images/danger.png" height="25px"/>
+                                <span class="energy-alert">Pending updates</span>
+                            </div>
+                        </div>
+
+                        <p class="alerts"></p>
                     </div>
                     <input type="checkbox" class="property-checkbox" data-property="property3"/>
                 </div>
@@ -172,7 +205,7 @@
             <div class="metric">
                 <div class="metric-container">
                     <h5 style="color: #1f77b4;">Energy Use Intensity (EUI):</h5>
-                    <img height="25px" onclick="openOverAllEnergy()" src="images/x.png" title="Energy cost over budget see recomendation!!"/>
+                    <img height="25px" onclick="openOverAllEnergy()" src="images/danger.png" title="Energy cost over budget see recomendation!!"/>
                 </div>
                 <p class="value" id="eui">120 kBTU/sqft</p>
             </div>
@@ -203,7 +236,7 @@
                 
                 <div class="savings-container">
                     <p class="value" id="water-savings">$1,200</p>
-                    <img height="25px" title="Water cost over budget see recommendations!!" onclick="openwatersavingmodal()" src="images/x.png" alt="check"/>
+                    <img height="25px" title="Water cost over budget see recommendations!!" onclick="openwatersavingmodal()" src="images/danger.png" alt="check"/>
                 </div>
             </div>
     
@@ -322,7 +355,7 @@
     document.getElementById('water-savings').innerText = waterSavings;
     }
 
-    function selectProperty(propertyId, address, energyStar, eui, ghg, energySavings, waterSavings) {
+    function selectProperty(propertyId, address, energyStar, eui, wui, ghg, energySavings, waterSavings) {
     // Remove 'selected' class from all properties
     document.querySelectorAll('.property').forEach(function(el) {
         el.classList.remove('selected');
@@ -332,7 +365,7 @@
     document.getElementById(propertyId).classList.add('selected');
     
     // Update metrics
-    updateMetrics(address, energyStar, eui, ghg, energySavings, waterSavings);
+    updateMetrics(address, energyStar, eui, wui, ghg, energySavings, waterSavings);
 }
 
 
