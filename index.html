@@ -69,7 +69,7 @@
     
     .app-preview {
         width: 80%;
-        max-width: 500px;
+        max-width: 75%;
         height: 650px;
         background-color: #e5e7eb;
         border-radius: 2rem;
@@ -118,6 +118,13 @@
     .features-container {
     display: flex;
     justify-content: space-evenly;
+    gap: 20%;
+}
+.dashboard-item-heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
     
     .features h2 {
@@ -132,8 +139,8 @@
     
     .feature-item {
         display: flex;
-    justify-content: center;
-    gap: 5px;
+        justify-content: start;
+        gap: 15px;
         margin-bottom: 1.5rem;
     }
     
@@ -212,6 +219,22 @@
         color: #d1fae5;
         text-decoration: none;
     }
+    .dashboard-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            background-color: #f0f7ff;
+            cursor: pointer;
+        }
+
+        .dashboard-item h3 {
+            margin: 0 0 8px 0;
+            color: #333;
+        }
+
+        .dashboard-item p {
+            margin: 0;
+            color: #666;
+        }
 </style>
 </head>
 <body>
@@ -228,28 +251,42 @@
         <div class="app-preview">
             <div class="app-screen">
                 <div class="app-header">
-                    <div class="app-title">Senergy Dashboard</div>
-                    <div>📊</div>
+                    <div class="app-title">Why Senergy?</div>
+                    <!-- <div>📊</div> -->
                 </div>
                 
                 <div class="dashboard-item">
-                    <h3>Energy Savings</h3>
-                    <p>18% reduction this month</p>
+                    <div class="dashboard-item-heading" style="margin-left: -5%;">
+                        <img src="html/images/savings.png" height="45px">
+                        <h3>Energy Savings</h3>
+                    </div>
+                    <p style="margin-left: 7%;">18% reduction this month</p>
                 </div>
                 
                 <div class="dashboard-item">
-                    <h3>Recommendations</h3>
-                    <p>3 new ways to save</p>
+                    <div class="dashboard-item-heading" style="margin-left: -1%;">
+                        <img src="html/images/rating.png" height="35px">
+                        <h3>Recommendations</h3>
+                    </div>
+                    
+                    <p style="margin-left: 7%;">3 new ways to save</p>
                 </div>
                 
                 <div class="dashboard-item">
-                    <h3>Usage Anomaly</h3>
-                    <p>Detected in HVAC system</p>
+                    <div class="dashboard-item-heading" style="margin-left: -5%;">
+                        <img src="html/images/usage.png" height="35px">
+                        <h3>Usage Anomaly</h3>
+                    </div>
+                    
+                    <p style="margin-left: 7%;">Detected in HVAC system</p>
                 </div>
                 
                 <div class="dashboard-item">
-                    <h3>Benchmark Status</h3>
-                    <p>15% below industry average</p>
+                    <div class="dashboard-item-heading" style="margin-left: -3%;">
+                        <img src="html/images/benchmarking.png" height="45px">
+                        <h3>Benchmark Status</h3>
+                    </div>
+                    <p style="margin-left: 7%;">15% below industry average</p>
                 </div>
             </div>
         </div>
@@ -268,7 +305,7 @@
                     </div>
                 </li>
                 
-                <li class="feature-item">
+                <li class="feature-item" style="margin-left: -20px;">
                     <div class="feature-icon">📊</div>
                     <div class="feature-text">
                         <h3>Benchmark Comparisons</h3>
@@ -315,8 +352,8 @@
         <div class="footer-links">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
+            <a href="html/ourmission.html">About Us</a>
             <a href="#">Contact</a>
-            <a href="#">Support</a>
         </div>
     </footer>
 </div>

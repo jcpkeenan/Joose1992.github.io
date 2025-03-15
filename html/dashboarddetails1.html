@@ -26,9 +26,9 @@
         padding: 10px 20px;
         font-size: 16px;
         background-color: #1f77b4;
-        color: black;
+        color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 0px;
         cursor: pointer;
     }
 
@@ -83,12 +83,28 @@
     min-height: 100vh;
     }
 
-    .sidebar-container {
+    .sidebar-container-small {
         background-color: #2078b3;
-        width: 20%; /* Adjust as needed */
+        width: 6%; /* Adjust as needed */
         min-height: 100vh;
         position: sticky;
         top: 0;
+    }
+    .sidebar-container {
+        background-color: #2078b3;
+        width: 23%; /* Adjust as needed */
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+    .small-side-menu-arrow{
+        height: 45px;
+    }
+    .normal-side-menu-arrow{
+        float: right;
+    height: 45px;
+    margin-top: 1px;
+    margin-bottom: -8px;
     }
 
     .main-sidebar {
@@ -118,30 +134,34 @@
                 align-items: center;   
                 gap: 65px;  
             }
-            input[type="checkbox"] {
-                transform: scale(.6);    /* Make the checkbox bigger */
-                border-width: 8px;        /* Increase the thickness of the checkbox border */
-                border-color: #000;
-                margin-right: 15px;       /* Set the color of the border */
-                height: 30px;             /* Set height */
-                width: 30px;              /* Set width */
-                cursor: pointer;         /* Add a pointer cursor when hovering */
-            }
-            .alert-message {
-                display: flex;         
-                align-items: center;   
-                gap: 20px;
-            }
-            .property-item{
-                display: flex; 
-                gap:5%;              /* Enable flexbox for the container */
-                align-items: center;         /* Vertically center the items */
-                margin-bottom: 10px;         /* Add space between property items */
-                padding: 10px;
-                border: 1px solid #ddd;     /* Add a border around each property */
-                border-radius: 5px;          /* Optional: Round the corners */
-                background-color: #fff; 
-            }
+input[type="checkbox"] {
+    transform: scale(.6);    /* Make the checkbox bigger */
+    border-width: 8px;        /* Increase the thickness of the checkbox border */
+    border-color: #000;
+    margin-right: 15px;       /* Set the color of the border */
+    height: 30px;             /* Set height */
+    width: 30px;              /* Set width */
+    cursor: pointer;         /* Add a pointer cursor when hovering */
+}
+.alert-message {
+    display: flex;         
+    align-items: center;   
+    gap: 20px;
+}
+.property-item{
+    display: flex; 
+    gap:5%;              /* Enable flexbox for the container */
+    align-items: center;         /* Vertically center the items */
+    margin-bottom: 10px;         /* Add space between property items */
+    padding: 10px;
+    border: 1px solid #ddd;     /* Add a border around each property */
+    border-radius: 5px;          /* Optional: Round the corners */
+    background-color: #fff; 
+}
+#small-side-menu{
+    display: none;
+}
+
 </style>
 </head>
 <body>
@@ -170,14 +190,63 @@
         </nav>
     </header>
     <div class="page-container">
-        <div class="sidebar-container">
+        
+        <div id="small-side-menu" class="sidebar-container-small">
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <!-- Sidebar -->
                 <div class="sidebar">
-                  <!-- Sidebar Menu -->
                   <nav class="mt-2 total-menu">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-              
+                        <li class="nav-item">
+                            <button class="small-side-menu-arrow" onclick="toggleMenuSize()"><span><img src="images/right.png"></span></button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')"><span> <img style="margin-bottom: 8px; margin-right: 2px;" height="30px" src="images/renewable-energy.png" alt=""></span></button>
+                            <div id="energy-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('energy-monthend', 'units')">M-E</button>
+                                <button onclick="displayChart('energy-yeartodate', 'units')">Y-t-D</button>
+                                <button onclick="displayChart('energy-rollingtwelvemonths', 'units')">R-T-M</button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('natural-gas-dropdown')"><span> <img style="margin-bottom: 15px; margin-right: 5px;" height="30px" src="images/gas.png" alt=""></span></button>
+                            <div id="natural-gas-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('naturalgas-monthend', 'units')">M-E</button>
+                                <button onclick="displayChart('naturalgas-yeartodate', 'units')">Y-t-D</button>
+                                <button onclick="displayChart('naturalgas-rollingtwelvemonths', 'units')">R-T-M</button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('electricity-dropdown')"><span> <img height="30px" src="images/electricity.png" alt=""></span></button>
+                            <div id="electricity-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('electricity-monthend', 'units')">M-E</button>
+                                <button onclick="displayChart('electricity-yeartodate', 'units')">Y-t-D</button>
+                                <button onclick="displayChart('electricity-rollingtwelvemonths', 'units')">R-T-Months</button>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <button class="dashboard-button" onclick="toggleDropdown('water-dropdown')"><span> <img height="30px" src="images/water.png" alt=""></span></button>
+                            <div id="water-dropdown" class="dropdown-content">
+                                <button onclick="displayChart('water-monthend', 'units')">M-E</button>
+                                <button onclick="displayChart('water-yeartodate', 'units')">Y-t-D</button>
+                                <button onclick="displayChart('water-rollingtwelvemonths', 'units')">R-T-Months</button>
+                            </div>
+                        </li>
+                    </ul>
+                  </nav>
+                </div>
+            </aside>
+        </div>
+
+
+        <div id="regual-side-menu" class="sidebar-container">
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                <div class="sidebar">
+                  <nav class="mt-2 total-menu">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <button class="normal-side-menu-arrow" onclick="toggleMenuSize()"><span><img src="images/left.png"></span></button>
+                        </li>
+
                         <li class="nav-item">
                             <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')"><span> <img style="margin-bottom: 8px; margin-right: 2px;" height="30px" src="images/renewable-energy.png" alt="">  Energy Dashboard</span></button>
                             <div id="energy-dropdown" class="dropdown-content">
@@ -212,11 +281,8 @@
                         </li>
                     </ul>
                   </nav>
-                
-                  <!-- /.sidebar-menu -->
                 </div>
-                <!-- /.sidebar -->
-              </aside>
+            </aside>
         </div>
         <div class="main-content">
             <div class="dashboardDetailsBody">
@@ -247,6 +313,118 @@
     
     
     <script type="text/javascript">
+function showRegularMenu() {
+  const regularMenu = document.getElementById("regual-side-menu");
+  const smallMenu = document.getElementById("small-side-menu");
+  
+  if (regularMenu && smallMenu) {
+    // Make sure both menus are initially visible for the animation
+    regularMenu.style.display = "block";
+    regularMenu.style.opacity = "0";
+    regularMenu.style.transform = "translateX(-20px)";
+    
+    // Hide small menu with animation
+    let smallOpacity = 1;
+    let smallTranslate = 0;
+    const smallFadeOut = setInterval(() => {
+      smallOpacity -= 0.1;
+      smallTranslate -= 2;
+      
+      smallMenu.style.opacity = Math.max(0, smallOpacity);
+      smallMenu.style.transform = `translateX(${smallTranslate}px)`;
+      
+      if (smallOpacity <= 0) {
+        clearInterval(smallFadeOut);
+        smallMenu.style.display = "none";
+      }
+    }, 20);
+    
+    // Show regular menu with animation
+    setTimeout(() => {
+      let regularOpacity = 0;
+      let regularTranslate = -20;
+      const regularFadeIn = setInterval(() => {
+        regularOpacity += 0.1;
+        regularTranslate += 2;
+        
+        regularMenu.style.opacity = Math.min(1, regularOpacity);
+        regularMenu.style.transform = `translateX(${regularTranslate}px)`;
+        
+        if (regularOpacity >= 1) {
+          clearInterval(regularFadeIn);
+        }
+      }, 20);
+    }, 100); // Slight delay before starting the fade in
+  }
+}
+
+// Function to show the small menu and hide the regular menu with animation
+function showSmallMenu() {
+  const regularMenu = document.getElementById("regual-side-menu");
+  const smallMenu = document.getElementById("small-side-menu");
+  
+  if (regularMenu && smallMenu) {
+    // Make sure small menu is initially visible for the animation
+    smallMenu.style.display = "block";
+    smallMenu.style.opacity = "0";
+    smallMenu.style.transform = "translateX(-20px)";
+    
+    // Hide regular menu with animation
+    let regularOpacity = 1;
+    let regularTranslate = 0;
+    const regularFadeOut = setInterval(() => {
+      regularOpacity -= 0.1;
+      regularTranslate -= 2;
+      
+      regularMenu.style.opacity = Math.max(0, regularOpacity);
+      regularMenu.style.transform = `translateX(${regularTranslate}px)`;
+      
+      if (regularOpacity <= 0) {
+        clearInterval(regularFadeOut);
+        regularMenu.style.display = "none";
+      }
+    }, 20);
+    
+    // Show small menu with animation
+    setTimeout(() => {
+      let smallOpacity = 0;
+      let smallTranslate = -20;
+      const smallFadeIn = setInterval(() => {
+        smallOpacity += 0.1;
+        smallTranslate += 2;
+        
+        smallMenu.style.opacity = Math.min(1, smallOpacity);
+        smallMenu.style.transform = `translateX(${smallTranslate}px)`;
+        
+        if (smallOpacity >= 1) {
+          clearInterval(smallFadeIn);
+        }
+      }, 20);
+    }, 100); // Slight delay before starting the fade in
+  }
+}
+
+// Function to toggle between menu states with animation
+function toggleMenuSize() {
+  const regularMenu = document.getElementById("regual-side-menu");
+  const smallMenu = document.getElementById("small-side-menu");
+  
+  if (regularMenu && smallMenu) {
+    // Check which menu is currently visible
+    const isRegularVisible = 
+      regularMenu.style.display !== "none" && 
+      (regularMenu.style.opacity === "" || 
+       parseFloat(regularMenu.style.opacity) > 0);
+    
+    if (isRegularVisible) {
+      showSmallMenu();
+    } else {
+      showRegularMenu();
+    }
+  }
+}
+
+
       // Main configuration object to store all chart data
 const chartConfig = {
     energy: {
