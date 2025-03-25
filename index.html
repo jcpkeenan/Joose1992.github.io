@@ -35,7 +35,7 @@
     }
     
     .logo {
-        font-size: 2rem;
+        font-size: 3.5rem;
         font-weight: bold;
         margin-bottom: 0.5rem;
     }
@@ -70,7 +70,7 @@
     .app-preview {
         width: 80%;
         max-width: 75%;
-        height: 650px;
+        height: 490px;
         background-color: #e5e7eb;
         border-radius: 2rem;
         margin: 1rem auto 2rem;
@@ -90,7 +90,7 @@
     
     .app-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         padding: 0.5rem;
         border-bottom: 1px solid #e5e7eb;
@@ -98,12 +98,13 @@
     }
     
     .app-title {
+        font-size: 45px;
         font-weight: bold;
         color: #2078b3;
     }
     
     .dashboard-item {
-        background-color: #f8f9fa;
+        background-color: #f0f7ff;
         border-radius: 0.5rem;
         padding: 1rem;
         margin-bottom: 1rem;
@@ -117,8 +118,8 @@
 
     .features-container {
     display: flex;
-    justify-content: space-evenly;
-    gap: 20%;
+    justify-content: center;
+    gap: 2%;
 }
 .dashboard-item-heading{
     display: flex;
@@ -145,8 +146,8 @@
     }
     
     .feature-icon {
-        width: 4rem;
-        height: 4rem;
+        width: 5.5rem;
+        height: 5.5rem;
         background-color: #bfdff5;
         border-radius: 50%;
         display: flex;
@@ -219,12 +220,7 @@
         color: #d1fae5;
         text-decoration: none;
     }
-    .dashboard-item:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            background-color: #f0f7ff;
-            cursor: pointer;
-        }
+    
 
         .dashboard-item h3 {
             margin: 0 0 8px 0;
@@ -240,9 +236,57 @@
 <body>
 <div class="container">
     <header>
-        <div class="logo"><span><img src="images/logo.png" height="55px">Senergy</span></div>
-        <div class="tagline">Empowering efficiency, reducing utility expenses</div>
+        <div class="features-container">
+                
+            <div><img src="images/logo.png" height="95px"></div>
+                
+            <div class="logo"><span>Senergy</span></div>
+        </div>
     </header>
+
+    <section class="features">
+        <h2>Smart Energy Management</h2>
+        <div class="row">
+            <div class="col-7">
+                <ul>
+                    <li class="feature-item">
+                        <div class="feature-icon"><img src="html/images/regenerate.png" height="55px"></div>
+                        <div class="feature-text">
+                            <h3>Automatic EnergyStar Integration</h3>
+                            <p>No manual data entry needed - we connect directly to your systems</p>
+                        </div>
+                    </li>
+                    <li class="feature-item" style="margin-right: 5%;">
+                        <div class="feature-icon"><img src="html/images/predictive-chart.png" height="55px"></div>
+                        <div class="feature-text">
+                            <h3>Benchmark Comparisons</h3>
+                            <p>See how your energy usage compares to industry standards</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-5" style="align-content: end;">
+                <ul>
+                    <li class="feature-item">
+                        <div class="feature-icon"><img src="html/images/search.png" height="55px"></div>
+                        <div class="feature-text">
+                            <h3>Anomaly Detection</h3>
+                            <p>We identify unusual energy usage patterns.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="feature-item">
+                        <div class="feature-icon"><img src="html/images/idea.png" height="55px"></div>
+                        <div class="feature-text">
+                            <h3>Actionable Recommendations</h3>
+                            <p>Get specific steps to reduce energy consumption and costs</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      
+    </section>
     
     <section class="hero">
         <h1>Save Energy Without The Effort</h1>
@@ -252,7 +296,6 @@
             <div class="app-screen">
                 <div class="app-header">
                     <div class="app-title">Why Senergy?</div>
-                    <!-- <div>📊</div> -->
                 </div>
                 
                 <div class="dashboard-item">
@@ -260,7 +303,6 @@
                         <img src="html/images/savings.png" height="45px">
                         <h3>Energy Savings</h3>
                     </div>
-                    <p style="margin-left: 7%;">18% reduction this month</p>
                 </div>
                 
                 <div class="dashboard-item">
@@ -268,8 +310,6 @@
                         <img src="html/images/rating.png" height="35px">
                         <h3>Recommendations</h3>
                     </div>
-                    
-                    <p style="margin-left: 7%;">3 new ways to save</p>
                 </div>
                 
                 <div class="dashboard-item">
@@ -277,8 +317,6 @@
                         <img src="html/images/usage.png" height="35px">
                         <h3>Usage Anomaly</h3>
                     </div>
-                    
-                    <p style="margin-left: 7%;">Detected in HVAC system</p>
                 </div>
                 
                 <div class="dashboard-item">
@@ -286,59 +324,9 @@
                         <img src="html/images/benchmarking.png" height="45px">
                         <h3>Benchmark Status</h3>
                     </div>
-                    <p style="margin-left: 7%;">15% below industry average</p>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <section class="features">
-        <h2>Smart Energy Management</h2>
-        
-        <ul class="feature-list">
-            <div class="features-container">
-                <li class="feature-item">
-                    <div class="feature-icon">🔄</div>
-                    <div class="feature-text">
-                        <h3>Automatic EnergyStar Integration</h3>
-                        <p>No manual data entry needed - we connect directly to your systems</p>
-                    </div>
-                </li>
-                
-                <li class="feature-item" style="margin-left: -20px;">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-text">
-                        <h3>Benchmark Comparisons</h3>
-                        <p>See how your energy usage compares to industry standards</p>
-                    </div>
-                </li>
-            </div>
-            <div class="features-container">
-                <li class="feature-item">
-                    <div class="feature-icon">🔍</div>
-                    <div class="feature-text">
-                        <h3>Anomaly Detection</h3>
-                        <p>We identify unusual energy usage patterns before they cost you</p>
-                    </div>
-                </li>
-                
-                <li class="feature-item">
-                    <div class="feature-icon">💡</div>
-                    <div class="feature-text">
-                        <h3>Actionable Recommendations</h3>
-                        <p>Get specific steps to reduce energy consumption and costs</p>
-                    </div>
-                </li>
-            </div>
-            
-            <!-- <li class="feature-item">
-                <div class="feature-icon">💰</div>
-                <div class="feature-text">
-                    <h3>Easy Billing Reviews</h3>
-                    <p>Quickly analyze utility bills to identify savings opportunities</p>
-                </div>
-            </li> -->
-        </ul>
     </section>
     
     <section class="cta">
