@@ -231,16 +231,45 @@
             margin: 0;
             color: #666;
         }
+/* Hide energy-details by default */
+.energy-details, .recommendation-details, .usage-details, .benchmark-details {
+  display: none;
+  text-align: center;
+  margin-left: 8%;
+}
+
+/* Show energy-details when hovering over dashboard-item-heading */
+.dashboard-item-heading:hover + .energy-details {
+  display: block;
+}
+
+.dashboard-item-heading:hover + .recommendation-details{
+    display: block;
+}
+.dashboard-item-heading:hover + .usage-details{
+    display: block;
+}
+.dashboard-item-heading:hover + .benchmark-details{
+    display: block;
+}
+
 </style>
 </head>
 <body>
 <div class="container">
     <header>
         <div class="features-container">
-                
             <div><img src="images/logo.png" height="95px"></div>
-                
             <div class="logo"><span>Senergy</span></div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-7">
+                <div style="margin-top: 10px; margin-left: -10%; font-size: 24px;"><p>Empowering building owners</p></div>
+            </div>
+            <div class="col-2">
+                <a class="nav-link text-white" href="html/ourmission.html">Our Mission</a>
+            </div>
         </div>
     </header>
 
@@ -303,12 +332,20 @@
                         <img src="html/images/savings.png" height="45px">
                         <h3>Energy Savings</h3>
                     </div>
+                    <div class="energy-details">
+                        <p>Track cumulative savings and potential tenant rebates</p>
+                        <p>Identify energy-efficient opportunities and cost reductions.</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-item">
                     <div class="dashboard-item-heading" style="margin-left: -1%;">
                         <img src="html/images/rating.png" height="35px">
                         <h3>Recommendations</h3>
+                    </div>
+                    <div class="recommendation-details">
+                        <p>Receive personalized energy and water-savings tips</p>
+                        <p>and AI-driven insights for improved efficiency.</p>
                     </div>
                 </div>
                 
@@ -317,12 +354,19 @@
                         <img src="html/images/usage.png" height="35px">
                         <h3>Usage Anomaly</h3>
                     </div>
+                    <div class="usage-details">
+                        <p>Get instants alerts for unexpected energy or water consumption</p>
+                        <p>Proactively address problems before they escalate.</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-item">
                     <div class="dashboard-item-heading" style="margin-left: -3%;">
                         <img src="html/images/benchmarking.png" height="45px">
                         <h3>Benchmark Status</h3>
+                    </div>
+                    <div class="benchmark-details">
+                        <p>Compare energy and water usage to stablished standards</p>
                     </div>
                 </div>
             </div>
@@ -345,5 +389,18 @@
         </div>
     </footer>
 </div>
+
+<script type="text/javascript">
+// Add event listeners to all dashboard-item-heading elements
+document.querySelectorAll('.dashboard-item-heading').forEach(heading => {
+  heading.addEventListener('mouseenter', () => {
+    document.querySelector('.app-preview').style.height = '520px';
+  });
+  
+  heading.addEventListener('mouseleave', () => {
+    document.querySelector('.app-preview').style.height = 'initial'; // or your default width
+  });
+});
+</script>
 </body>
 </html>
