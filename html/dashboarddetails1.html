@@ -168,7 +168,7 @@ input[type="checkbox"] {
     <header>
         <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" style="color:white; font-size: 30px;" href="index.html"><span> <img height="45px" width="45px" src="images/logo.png"> Senergy</span></a>
+                <a class="navbar-brand" style="color:white; font-size: 30px;" href="maindashboard.html"><span> <img height="45px" width="45px" src="images/logo.png"> Senergy</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -190,63 +190,15 @@ input[type="checkbox"] {
         </nav>
     </header>
     <div class="page-container">
-        
-        <div id="small-side-menu" class="sidebar-container-small">
+
+        <div class="sidebar-container">
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <div class="sidebar">
                   <nav class="mt-2 total-menu">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <button class="small-side-menu-arrow" onclick="toggleMenuSize()"><span><img src="images/right.png"></span></button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')"><span> <img style="margin-bottom: 8px; margin-right: 2px;" height="30px" src="images/renewable-energy.png" alt=""></span></button>
-                            <div id="energy-dropdown" class="dropdown-content">
-                                <button onclick="displayChart('energy-monthend', 'units')">M-E</button>
-                                <button onclick="displayChart('energy-yeartodate', 'units')">Y-t-D</button>
-                                <button onclick="displayChart('energy-rollingtwelvemonths', 'units')">R-T-M</button>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <button class="dashboard-button" onclick="toggleDropdown('natural-gas-dropdown')"><span> <img style="margin-bottom: 15px; margin-right: 5px;" height="30px" src="images/gas.png" alt=""></span></button>
-                            <div id="natural-gas-dropdown" class="dropdown-content">
-                                <button onclick="displayChart('naturalgas-monthend', 'units')">M-E</button>
-                                <button onclick="displayChart('naturalgas-yeartodate', 'units')">Y-t-D</button>
-                                <button onclick="displayChart('naturalgas-rollingtwelvemonths', 'units')">R-T-M</button>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <button class="dashboard-button" onclick="toggleDropdown('electricity-dropdown')"><span> <img height="30px" src="images/electricity.png" alt=""></span></button>
-                            <div id="electricity-dropdown" class="dropdown-content">
-                                <button onclick="displayChart('electricity-monthend', 'units')">M-E</button>
-                                <button onclick="displayChart('electricity-yeartodate', 'units')">Y-t-D</button>
-                                <button onclick="displayChart('electricity-rollingtwelvemonths', 'units')">R-T-Months</button>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <button class="dashboard-button" onclick="toggleDropdown('water-dropdown')"><span> <img height="30px" src="images/water.png" alt=""></span></button>
-                            <div id="water-dropdown" class="dropdown-content">
-                                <button onclick="displayChart('water-monthend', 'units')">M-E</button>
-                                <button onclick="displayChart('water-yeartodate', 'units')">Y-t-D</button>
-                                <button onclick="displayChart('water-rollingtwelvemonths', 'units')">R-T-Months</button>
-                            </div>
-                        </li>
-                    </ul>
-                  </nav>
-                </div>
-            </aside>
-        </div>
-
-
-        <div id="regual-side-menu" class="sidebar-container">
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <div class="sidebar">
-                  <nav class="mt-2 total-menu">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <button class="normal-side-menu-arrow" onclick="toggleMenuSize()"><span><img src="images/left.png"></span></button>
-                        </li>
-
+                        </li> -->
                         <li class="nav-item">
                             <button class="dashboard-button" onclick="toggleDropdown('energy-dropdown')"><span> <img style="margin-bottom: 8px; margin-right: 2px;" height="30px" src="images/renewable-energy.png" alt="">  Energy Dashboard</span></button>
                             <div id="energy-dropdown" class="dropdown-content">
